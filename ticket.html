@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raise Ticket</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#f6faf7}
+nav{background:white;padding:12px 30px;display:flex;justify-content:space-between;border-bottom:2px solid #111}
+nav h2{color:#0b4a2e;font-weight:800} nav a{margin-left:12px;text-decoration:none;color:#111;font-weight:700;font-size:13px}
+.box{max-width:600px;margin:30px auto;background:white;border:2px solid #111;border-radius:24px;overflow:hidden}
+.top{background:#0b4a2e;padding:25px;color:white;text-align:center}
+.top span{background:white;color:#0b4a2e;padding:6px 16px;border-radius:20px;font-weight:800;display:inline-block;margin-top:10px;border:2px solid #111}
+.body{padding:20px}
+input,select,textarea{width:100%;padding:12px;border:2px solid #111;border-radius:12px;margin-top:4px;background:#f9fdf9}
+label{font-weight:700;font-size:11px}
+.btn{width:100%;padding:14px;background:#111;color:white;border-radius:12px;font-weight:800;border:2px solid #111;cursor:pointer;margin-top:12px}
+</style>
+</head>
+<body>
+<nav><h2>NDMA ICT Helpdesk</h2><div><a href="home.html">Home</a><a href="admin.html">Admin</a></div></nav>
+
+<div class="box">
+<div class="top"><h1>🎫 Raise Ticket</h1><span id="show">NDMA-001</span></div>
+<div class="body">
+<form id="f" action="https://formsubmit.co/hanihassanyare84@gmail.com" method="POST">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="Ticket_No" id="tid">
+<input type="hidden" name="_next" value="http://127.0.0.1:5500/admin.html">
+<label>Your Name *</label><input type="text" name="Name" required placeholder="Hani">
+<br><br>
+<label>Issue *</label><select name="Issue" required><option value="">Choose</option><option>Computer Slow</option><option>WiFi</option><option>Printer</option><option>Email</option></select>
+<br><br>
+<label>Details</label><textarea name="Details" rows="3" placeholder="My pc..."></textarea>
+<button class="btn" type="submit">SUBMIT - Auto Count</button>
+</form>
+</div>
+</div>
+
+<script>
+let c = localStorage.getItem('ndma_ticket_count') ? parseInt(localStorage.getItem('ndma_ticket_count')) : 0;
+c++;
+let id = 'NDMA-' + String(c).padStart(3,'0');
+document.getElementById('show').innerText = id;
+document.getElementById('tid').value = id;
+document.getElementById('f').addEventListener('submit', ()=>{
+ localStorage.setItem('ndma_ticket_count', c);
+ localStorage.setItem('last_ticket', id);
+});
+</script>
+</body>
+</html>

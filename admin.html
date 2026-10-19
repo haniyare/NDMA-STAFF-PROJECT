@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:linear-gradient(180deg,#052e1a 0%,#0b4a2e 30%,#f5f9f6 30%);min-height:100vh}
+nav{background:white;padding:12px 30px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #111}
+nav h2{color:#0b4a2e;font-weight:800} nav a{text-decoration:none;color:#111;font-weight:700;margin-left:12px;font-size:13px}
+.box{max-width:800px;margin:30px auto;background:white;border:2px solid #111;border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.2)}
+.top{background:linear-gradient(135deg,#020d06,#0b4a2e);padding:28px;color:white;text-align:center}
+.top h1{font-size:26px;font-weight:800}
+.cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding:20px}
+.c{background:#f6faf7;border:2px solid #111;border-radius:16px;padding:18px;text-align:center}
+.c .num{font-size:32px;font-weight:800;color:#0b4a2e}
+.c .lab{font-size:11px;font-weight:600;color:#555;margin-top:4px}
+.list{padding:0 20px 20px}
+.item{background:white;border:2px solid #111;border-radius:12px;padding:12px 16px;margin-top:10px;display:flex;justify-content:space-between;align-items:center}
+.item b{color:#0b4a2e}
+.btn{width:100%;padding:14px;background:#111;color:white;border-radius:12px;border:2px solid #111;font-weight:800;cursor:pointer;margin-top:15px}
+.btn:hover{background:#0b4a2e}
+#empty{text-align:center;padding:20px;color:#888;font-size:13px}
+</style>
+</head>
+<body>
+<nav><h2>NDMA ICT Helpdesk</h2><div><a href="home.html">Home</a><a href="admin.html">Admin</a></div></nav>
+
+<div class="box">
+<div class="top">
+<h1>📊 Admin Dashboard</h1>
+<p style="font-size:12px;margin-top:6px;opacity:0.9">Auto Counting System - Hani 0725467098</p>
+</div>
+
+<div class="cards">
+<div class="c"><div class="num" id="total">0</div><div class="lab">Total Tickets<br>Auto Adding</div></div>
+<div class="c"><div class="num" id="last">-</div><div class="lab">Last Ticket No</div></div>
+<div class="c"><div class="num" id="rtotal">0</div><div class="lab">Password Resets<br>Auto Adding</div></div>
+</div>
+
+<div class="list">
+<h4 style="font-size:14px;font-weight:800">Recent Activity - Auto Numbers</h4>
+<div id="list"></div>
+<div id="empty">No tickets yet. When you submit from ticket.html, numbers will add automatically here: NDMA-001, 002, 003...</div>
+<button class="btn" onclick="if(confirm('Clear all counts?')){localStorage.clear();location.reload();}">🗑️ Clear Counts - Reset to 0</button>
+<p style="font-size:11px;text-align:center;margin-top:10px;color:#666">All details sent to hanihassanyare84@gmail.com - Check Gmail inbox</p>
+</div>
+</div>
+
+<script>
+// Read auto numbers
+let total = localStorage.getItem('ndma_ticket_count') || 0;
+let last = localStorage.getItem('last_ticket') || '-';
+let rtotal = localStorage.getItem('ndma_reset_count') || 0;
+let rlast = localStorage.getItem('last_reset') || '-';
+
+document.getElementById('total').innerText = total;
+document.getElementById('last').innerText = last;
+document.getElementById('rtotal').innerText = rtotal;
+
+// Show list with auto numbers
+let list = document.getElementById('list');
+let html = '';
+if(total>0){
+ for(let i=total;i>=1 && i>total-5;i--){
+   html+=`<div class="item"><span>🎫 <b>NDMA-${String(i).padStart(3,'0')}</b> - ICT Ticket</span><span style="font-size:11px">Auto Added</span></div>`;
+ }
+}
+if(rtotal>0){
+ for(let i=rtotal;i>=1 && i>rtotal-3;i--){
+   html+=`<div class="item"><span>🔒 <b>RST-${String(i).padStart(3,'0')}</b> - Password Reset</span><span style="font-size:11px">Auto Added</span></div>`;
+ }
+}
+if(html!=''){list.innerHTML=html;document.getElementById('empty').style.display='none';}
+
+// Animate numbers
+document.querySelectorAll('.num').forEach(el=>{
+ if(el.innerText!='-' && !isNaN(parseInt(el.innerText))){
+   let t=parseInt(el.innerText),c=0,inc=t/50||1;
+   let timer=setInterval(()=>{c+=inc;if(c>=t){el.innerText=el.id=='last'||el.id.includes('last')?last:t;clearInterval(timer);}else el.innerText=Math.floor(c);},20);
+ }
+});
+</script>
+</body>
+</html>

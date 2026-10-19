@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NDMA ICT Helpdesk - Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#f6faf7}
+nav{background:white;padding:12px 30px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #111;position:sticky;top:0;z-index:10}
+nav .logo{color:#0b4a2e;font-weight:800;font-size:18px;line-height:1}
+nav .logo span{color:#111;font-size:11px;display:block;font-weight:600}
+nav .links a{margin-left:15px;text-decoration:none;color:#111;font-weight:700;font-size:13px}
+.stats{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:0;padding:25px 20px 10px}
+.bar{height:22px;background:#0b4a2e;flex:1;max-width:160px}
+.bar.l{border-radius:0 4px 4px 0} .bar.r{border-radius:4px 0 0 4px}
+.stat{text-align:center;flex:1;padding:0 10px}
+.stat .n{font-size:34px;font-weight:800;color:#0b4a2e}
+.stat .t{font-size:11px;font-weight:600;color:#555}
+.search{max-width:650px;margin:15px auto;padding:0 20px;position:relative}
+.search input{width:100%;padding:15px 22px 15px 45px;border:2px solid #111;border-radius:40px;outline:none;background:white;box-shadow:0 8px 25px rgba(0,0,0,0.08)}
+.search input:focus{border-color:#0b4a2e}
+.search span{position:absolute;left:40px;top:50%;transform:translateY(-50%)}
+#msg{display:none;text-align:center;margin:10px auto;padding:10px 18px;background:#0b4a2e;color:white;border-radius:20px;font-size:13px;font-weight:600;max-width:fit-content}
+.grid{max-width:1100px;margin:20px auto;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:20px}
+.card{background:white;border:2px solid #111;border-radius:18px;padding:20px;cursor:pointer;transition:0.25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 15px 35px rgba(0,0,0,0.12)}
+.card.hidden{display:none}
+.card h4{font-size:14px;font-weight:800;color:#111}
+.card p{font-size:11px;color:#666;margin-top:4px}
+.card.green{background:linear-gradient(135deg,#0b4a2e,#1a8a5a);border-color:#0b4a2e;color:white}
+.card.green h4,.card.green p{color:white}
+@media(max-width:900px){.grid{grid-template-columns:1fr 1fr} .bar{display:none}}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+<div class="logo">NDMA<span>ICT Helpdesk</span></div>
+<div class="links"><a href="home.html">Home</a><a href="admin.html">Admin</a></div>
+</nav>
+
+<div class="stats">
+<div class="bar l"></div>
+<div class="stat"><div class="n" data-target="250">0</div><div class="t">Staff Helped</div></div>
+<div class="stat"><div class="n" data-target="6">0</div><div class="t">Quick Solutions</div></div>
+<div class="stat"><div class="n">24/7</div><div class="t">Self-Help</div></div>
+<div class="bar r"></div>
+</div>
+
+<div class="search"><span>🔍</span><input type="text" id="s" placeholder="Type your problem.. printer, wifi, email, slow pc" onkeyup="search()"></div>
+<div id="msg"></div>
+
+<div class="grid" id="grid">
+<div class="card" data-key="internet wifi lan vpn"><h4>🖧 Internet Not Working</h4><p>WIFI, LAN, VPN quick fix</p></div>
+<div class="card" data-key="printer scanner offline"><h4>🖨️ Printer / Scanner</h4><p>Offline, paper jam solutions</p></div>
+<div class="card" data-key="email outlook hanihassanyare84@gmail.com"><h4>✉️ Email & Outlook</h4><p>Email not sending, Outlook error</p></div>
+<div class="card" data-key="computer slow pc hp laptop"><h4>💻 Computer Slow</h4><p>HP laptop not turning on</p></div>
+<div class="card" data-key="password reset"><h4>🔒 Password Reset</h4><p>Reset domain & email password</p></div>
+<div class="card green" data-key="ticket raise admin" onclick="location.href='admin.html'"><h4>🎫 Admin Dashboard</h4><p>See tickets NDMA-001,002 - auto counting</p></div>
+</div>
+
+<script>
+// Auto numbers 0 -> 250+
+document.querySelectorAll('.n[data-target]').forEach(el=>{
+ let target=parseInt(el.dataset.target),c=0,inc=target/70;
+ let t=setInterval(()=>{c+=inc;if(c>=target){el.innerText=target+'+';clearInterval(t);}else el.innerText=Math.floor(c)+'+';},20);
+});
+// Live typing + message
+function search(){
+ let q=document.getElementById('s').value.toLowerCase().trim();
+ let cards=document.querySelectorAll('.card');
+ let msg=document.getElementById('msg');
+ let found=0;
+ cards.forEach(c=>{
+   let k=(c.dataset.key+' '+c.innerText).toLowerCase();
+   if(q==''||k.includes(q)){c.classList.remove('hidden');found++;}
+   else c.classList.add('hidden');
+ });
+ if(q==''){msg.style.display='none';}
+ else if(found==0){msg.style.display='block';msg.innerHTML='❌ No result for "'+q+'" - Try wifi, printer, email';}
+ else{msg.style.display='block';msg.innerHTML='✅ Found '+found+' for "'+q+'"';}
+}
+</script>
+</body>
+</html>

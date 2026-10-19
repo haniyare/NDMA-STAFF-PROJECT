@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NDMA ICT Helpdesk | FAQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#f5f8f6}
+nav{background:white;padding:12px 30px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,0.05);position:sticky;top:0;z-index:1000}
+nav .logo-area{display:flex;align-items:center;gap:12px}
+nav .logo-area img{width:55px;height:55px;border-radius:50%;background:white;animation:floatGlow 3s ease-in-out infinite}
+@keyframes floatGlow{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+nav h2{color:#0b4a2e;font-size:18px}
+nav ul{display:flex;list-style:none;gap:20px}
+nav ul li a{text-decoration:none;color:#333;font-weight:600}
+nav ul li a.active, nav ul li a:hover{color:#1a8a5a}
+
+.header{background:linear-gradient(135deg,#0b4a2e 0%, #1a8a5a 100%);color:white;padding:70px 20px;text-align:center;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);animation:shine 6s infinite}
+@keyframes shine{0%{transform:translate(0,0)}50%{transform:translate(10%,10%)}100%{transform:translate(0,0)}}
+.header h1{font-size:42px;position:relative}
+.header p{opacity:0.9;margin-top:8px;position:relative}
+
+/* Search */
+.search-box{max-width:600px;margin:-25px auto 30px;background:white;padding:8px;border-radius:50px;box-shadow:0 10px 30px rgba(0,0,0,0.1);display:flex;align-items:center;gap:10px;position:relative;z-index:5}
+.search-box input{flex:1;border:none;outline:none;padding:12px 20px;font-size:15px;border-radius:50px}
+.search-box button{background:#0b4a2e;color:white;border:none;padding:10px 20px;border-radius:50px;cursor:pointer;font-weight:600}
+
+/* Tabs Slider */
+.tabs{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:20px auto;max-width:900px;padding:0 20px}
+.tab{padding:10px 22px;border-radius:30px;background:white;cursor:pointer;font-weight:600;color:#0b4a2e;border:2px solid #e8f5e9;transition:0.3s}
+.tab.active, .tab:hover{background:#0b4a2e;color:white;border-color:#0b4a2e;transform:translateY(-2px)}
+
+/* FAQ */
+.faq-container{max-width:850px;margin:30px auto;padding:0 20px 40px}
+.faq-item{background:white;margin-bottom:16px;border-radius:16px;box-shadow:0 5px 20px rgba(0,0,0,0.06);overflow:hidden;transform:translateY(0);transition:0.3s;border-left:4px solid transparent}
+.faq-item:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,0.1);border-left-color:#1a8a5a}
+.faq-question{padding:18px 22px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:#222;font-size:16px}
+.faq-question span.icon{width:32px;height:32px;background:#e8f5e9;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#0b4a2e;transition:0.3s}
+.faq-item.active .faq-question span.icon{background:#0b4a2e;color:white;transform:rotate(180deg)}
+.faq-answer{padding:0 22px;max-height:0;overflow:hidden;transition:all 0.4s ease;color:#555;line-height:1.7;font-size:14.5px}
+.faq-item.active .faq-answer{padding:0 22px 20px;max-height:400px}
+.faq-item.hide{display:none}
+footer{background:#0b4a2e;color:white;text-align:center;padding:20px;margin-top:20px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo-area">
+    <img src="logo.png" alt="NDMA Logo">
+    <h2>NDMA ICT Helpdesk</h2>
+  </div>
+  <ul>
+    <li><a href="home.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="Faq.html" class="active">FAQ</a></li>
+  </ul>
+</nav>
+
+<div class="header">
+  <h1>How Can We Help You?</h1>
+  <p>Search or browse categories for instant ICT solutions</p>
+</div>
+
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Search for Wi-Fi, email, password...">
+  <button>Search</button>
+</div>
+
+<div class="tabs">
+  <div class="tab active" data-filter="all">All Questions</div>
+  <div class="tab" data-filter="email">Email</div>
+  <div class="tab" data-filter="network">Network</div>
+  <div class="tab" data-filter="hardware">Hardware</div>
+  <div class="tab" data-filter="security">Security</div>
+</div>
+
+<div class="faq-container" id="faqList">
+  <!-- EMAIL -->
+  <div class="faq-item" data-category="email"><div class="faq-question">How do I reset my NDMA email password? <span class="icon">▼</span></div><div class="faq-answer">Contact ICT via ticket or visit Room 203. Password reset within 30 minutes. You need your Staff ID.</div></div>
+  <div class="faq-item" data-category="email"><div class="faq-question">Why am I not receiving external emails? <span class="icon">▼</span></div><div class="faq-answer">Check Spam/Junk folder. If not there, your mailbox may be full. Clear old emails or contact ICT to increase quota.</div></div>
+  <div class="faq-item" data-category="email"><div class="faq-question">How to setup NDMA email on my phone? <span class="icon">▼</span></div><div class="faq-answer">Use Outlook App > Add Account > Exchange > email: yourname@ndma.go.ke > Server: outlook.office365.com</div></div>
+
+  <!-- NETWORK -->
+  <div class="faq-item" data-category="network"><div class="faq-question">Wi-Fi connected but no internet? <span class="icon">▼</span></div><div class="faq-answer">1. Forget network and reconnect 2. Restart laptop 3. Check if other staff have same issue. If yes, it's a central outage - we are fixing.</div></div>
+  <div class="faq-item" data-category="network"><div class="faq-question">What is the Wi-Fi password for guests? <span class="icon">▼</span></div><div class="faq-answer">Guest Wi-Fi: NDMA-GUEST. Password changes weekly. Request from ICT Helpdesk with visitor name and ID.</div></div>
+  <div class="faq-item" data-category="network"><div class="faq-question">How to get VPN for working from home? <span class="icon">▼</span></div><div class="faq-answer">Email ict@ndma.go.ke with Staff ID, department, and HOD approval. VPN credentials will be sent securely.</div></div>
+  <div class="faq-item" data-category="network"><div class="faq-question">Internet is very slow in my office block? <span class="icon">▼</span></div><div class="faq-answer">Peak hours 10am-12pm may be slow. If persistent, raise a ticket with your floor & room number. We will check the access point.</div></div>
+
+  <!-- HARDWARE -->
+  <div class="faq-item" data-category="hardware"><div class="faq-question">My computer is not powering on? <span class="icon">▼</span></div><div class="faq-answer">Check power cable and extension. Try different socket. If beeping sound, note the beep pattern and call Ext 231.</div></div>
+  <div class="faq-item" data-category="hardware"><div class="faq-question">How to request a new laptop / printer? <span class="icon">▼</span></div><div class="faq-answer">Download Equipment Request Form from intranet, get HOD signature, submit to ICT. Processing 2-3 working days.</div></div>
+  <div class="faq-item" data-category="hardware"><div class="faq-question">Printer shows offline error? <span class="icon">▼</span></div><div class="faq-answer">1. Check USB/Network cable 2. Restart printer 3. On your PC, go to Control Panel > Devices and Printers > Right-click > Use Printer Online.</div></div>
+  <div class="faq-item" data-category="hardware"><div class="faq-question">My projector is not displaying? <span class="icon">▼</span></div><div class="faq-answer">Press Windows + P and select Duplicate. Check HDMI/VGA cable. For boardroom projectors, use remote Input > HDMI 1.</div></div>
+
+  <!-- SECURITY -->
+  <div class="faq-item" data-category="security"><div class="faq-question">I clicked a suspicious email link, what to do? <span class="icon">▼</span></div><div class="faq-answer">IMMEDIATELY disconnect from internet, DO NOT enter password, and call ICT Security Team Ext 231. Change your password after.</div></div>
+  <div class="faq-item" data-category="security"><div class="faq-question">How to protect my files from ransomware? <span class="icon">▼</span></div><div class="faq-answer">Always backup to OneDrive, don't open .exe from email, keep antivirus updated. ICT runs daily backup at 6pm.</div></div>
+  <div class="faq-item" data-category="security"><div class="faq-question">Is it safe to use personal flash disks? <span class="icon">▼</span></div><div class="faq-answer">Scan with antivirus first. Personal USBs are blocked on some systems. Use NDMA OneDrive for file transfer instead.</div></div>
+  <div class="faq-item" data-category="security"><div class="faq-question">Who do I contact for urgent help? <span class="icon">▼</span></div><div class="faq-answer">For critical outage/security: Call Ext 231 or visit 2nd Floor ICT Office. WhatsApp Helpdesk: 0712 345 678. 8am-5pm Mon-Fri.</div></div>
+</div>
+
+<footer><p>&copy; 2026 NDMA ICT Helpdesk | Your Digital Partner</p></footer>
+
+<script>
+// Accordion slider animation
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasActive = item.classList.contains('active');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+    if(!wasActive) item.classList.add('active');
+  });
+});
+
+// Tabs filter - Beautiful slide
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const filter = tab.dataset.filter;
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.style.transform = 'translateY(10px)'; 
+      setTimeout(() => {
+        if(filter === 'all' || item.dataset.category === filter) item.classList.remove('hide');
+        else item.classList.add('hide');
+        item.style.transform = 'translateY(0)';
+      }, 150);
+    });
+  });
+});
+
+// Search
+document.getElementById('searchInput').addEventListener('keyup', function(){
+  const val = this.value.toLowerCase();
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const text = item.innerText.toLowerCase();
+    item.classList.toggle('hide', !text.includes(val));
+  });
+});
+</script>
+
+</body>
+</html>
