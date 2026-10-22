@@ -39,16 +39,28 @@ nav h2{color:#0b4a2e;font-weight:800} nav a{text-decoration:none;color:#111;font
 <div class="c"><div class="num" id="rtotal">0</div><div class="lab">Password Resets<br>Auto Adding</div></div>
 </div>
 
-<div class="list">
-<h4 style="font-size:14px;font-weight:800">Recent Activity - Auto Numbers</h4>
-<div id="list"></div>
-<div id="empty">No tickets yet. When you submit from ticket.html, numbers will add automatically here: NDMA-001, 002, 003...</div>
-<button class="btn" onclick="if(confirm('Clear all counts?')){localStorage.clear();location.reload();}">🗑️ Clear Counts - Reset to 0</button>
-<p style="font-size:11px;text-align:center;margin-top:10px;color:#666">All details sent to hanihassanyare84@gmail.com - Check Gmail inbox</p>
-</div>
+<div style="display:flex; justify-content:space-between; align-items:center; padding:10px 20px; background:#fff; border-bottom:2px solid #0b4a2f;">
+  <div id="logoTrick" style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+    <img src="https://www.ndma.gov.pk/public/img/logo.png" height="35">
+    <strong style="color:#0b4a2f;">NDMA ICT Helpdesk</strong>
+  </div>
+  <div style="display:flex; gap:18px;">
+    <a href="home.html" target="_self">Home</a>
+    <a href="about.html" target="_self">About</a>
+    <a href="contact.html" target="_self">Contact</a>
+    <a href="faq.html" target="_self">FAQ</a>
+    <a href="admin.html" id="adminLink" style="display:none; color:red;">Admin</a>
+  </div>
 </div>
 
 <script>
+let count=0;
+document.getElementById('logoTrick').onclick=()=>{
+  count++;
+  if(count>=3){document.getElementById('adminLink').style.display='block'; alert('Admin unlocked!'); count=0;}
+  setTimeout(()=>count=0,2000);
+}
+</script>
 // Read auto numbers
 let total = localStorage.getItem('ndma_ticket_count') || 0;
 let last = localStorage.getItem('last_ticket') || '-';

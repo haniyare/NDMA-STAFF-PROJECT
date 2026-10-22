@@ -1,91 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About - NDMA ICT Helpdesk</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{background:#f5f8f6}
-nav{background:white;padding:12px 30px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
-nav a{color:#0b4a2e;text-decoration:none;font-weight:600;border:2px solid #0b4a2e;padding:6px 16px;border-radius:20px}
-.hero{background:linear-gradient(135deg,#0b4a2e,#1a8a5a);color:white;padding:50px 20px;text-align:center}
-.hero img{width:120px;height:120px;background:white;border-radius:50%;padding:8px;animation:float 3s infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.container{max-width:900px;margin:30px auto;padding:20px}
-.card{background:white;padding:30px;border-radius:16px;box-shadow:0 6px 20px rgba(0,0,0,0.08);margin-bottom:20px;border-left:5px solid #0b4a2e}
-.card h2{color:#0b4a2e;margin-bottom:12px}
-.card p{line-height:1.7;color:#444}
-.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-top:20px}
-.member{background:white;padding:25px;border-radius:14px;text-align:center;box-shadow:0 5px 15px rgba(0,0,0,0.08)}
-.member .avatar{font-size:50px;margin-bottom:10px}
-.btn-home{display:inline-block;margin-top:20px;background:#0b4a2e;color:white;padding:12px 25px;border-radius:30px;text-decoration:none}
+body{margin:0;font-family:Arial;background:#f0f7f2}
+header{background:#0a5c2e;color:white;padding:25px 50px;display:flex;justify-content:space-between}
+.logo{font-size:28px;font-weight:900}
+nav a{color:white;margin-left:30px;text-decoration:none;font-size:18px}
+.hero{text-align:center;padding:60px;background:white}
+.hero h1{font-size:54px;color:#0a5c2e}
+.box{max-width:900px;margin:40px auto;background:white;padding:50px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.1)}
+.contact{background:#0a5c2e;color:white;padding:35px;border-radius:15px;margin-top:30px}
+.contact p{font-size:23px;margin:12px 0}
+.contact a{color:white;font-weight:bold}
 </style>
 </head>
 <body>
-
-<nav>
-<div style="display:flex;align-items:center;gap:10px">
-<img src="https://www.ndma.gov.pk/images/ndma-logo.png" width="50" style="border-radius:50%;background:white" onerror="this.outerHTML='🇵🇰'">
-<h3 style="color:#0b4a2e">NDMA ICT Helpdesk</h3>
-</div>
-<a href="index.html" > Home</a>
-</nav>
-
-<div class="hero">
-<img src="https://www.ndma.gov.pk/images/ndma-logo.png" onerror="this.outerHTML='<div style=font-size:80px>🇵🇰</div>'">
-<h1>About Our Helpdesk</h1>
-<p>Empowering NDMA Staff with Self-Help IT Solutions</p>
-</div>
-
-<div class="container">
-
-<div class="card">
-<h2>🎯 Our Mission</h2>
-<p>At <b>National Disaster Management Authority (NDMA)</b>, every minute counts. When disaster strikes, ICT systems must work. This Helpdesk was created to help NDMA staff solve common IT problems in <b>under 2 minutes</b> without waiting for ICT support.</p>
-<p style="margin-top:10px">No more waiting for printer fix, WiFi issues, or Outlook errors — just open the helpdesk and solve it yourself!</p>
-</div>
-
-<div class="card">
-<h2>💡 Why We Built This?</h2>
-<p>✔️ <b>250+ Staff</b> face small IT issues daily<br>
-✔️ <b>ICT Team</b> is busy with critical disaster systems<br>
-✔️ <b>70% issues</b> are simple and repeatable (printer, WiFi, PC slow)<br>
-✔️ <b>Solution:</b> A beautiful self-help portal — built for NDMA by NDMA</p>
-</div>
-
-<div class="card">
-<h2>👨‍💻 Built By</h2>
-<div class="team">
-<div class="member">
-<div class="avatar">👩‍💻</div>
-<h3>Hani</h3>
-<p>ICT Helpdesk Developer<br><b>NDMA HQ Islamabad</b></p>
-</div>
-<div class="member">
-<div class="avatar">🤝</div>
-<h3>ICT Team</h3>
-<p>Support & Guidance<br><b>Ext: 101</b></p>
-</div>
-<div class="member">
-<div class="avatar">🏢</div>
-<h3>NDMA</h3>
-<p>National Disaster Management Authority<br><b>Pakistan</b></p>
+<header><div class="logo">NDMA ICT Helpdesk</div><nav><a href="home.html">Home</a><a href="about.html">About</a></nav></header>
+<div class="hero"><h1>About NDMA ICT Helpdesk</h1></div>
+<div class="box">
+<h2 style="color:#0a5c2e;font-size:32px">About Us</h2>
+<p style="font-size:20px">NDMA ICT Helpdesk provides fast support for NDMA staff at HQ Islamabad.</p>
+<div class="contact">
+<h2 style="font-size:30px">Contact ICT - Hani Hassan Yare</h2>
+<p>📱 Phone: <a href="tel:0725467098">0725467098</a></p>
+<p>📧 Email: <a href="mailto:hanihassanyare84@gmail.com">hanihassanyare84@gmail.com</a></p>
+<p>💼 LinkedIn: linkedin.com/in/hani-hassan-yare</p>
+<p>🏢 Location: ICT Wing, 8 Floor, NDMA HQ</p>
 </div>
 </div>
-</div>
-
-<div class="card">
-<h2>📞 Contact ICT</h2>
-<p><b>Helpline:</b> Ext 101 (Inside NDMA)<br>
-<b>Email:</b> ict@ndma.gov.pk<br>
-<b>Location:</b> ICT Wing, 8 Floor, NDMA HQ, Islamabad<br>
-<b>Hours:</b> 9 AM - 5 PM (Mon-Fri) — But this portal is 24/7!</p>
-<a href="home.html" class="btn-home">← Back to Home Page</a>
-</div>
-
-</div>
-
 </body>
-</html>  
+</html>

@@ -63,45 +63,28 @@ nav ul li a.active{color:#0b4a2e;border-bottom:2px solid #0b4a2e}
     <div class="floor">🏢 8th Floor - NDMA HQ, Nairobi</div>
   </div>
 
-  <div class="body">
-    <div class="stack">
-      <a href="tel:0725467098" class="s-item"><div class="ic">📞</div><div><b>PHONE / WHATSAPP</b><span>0725467098</span></div></a>
-      <a href="mailto:hanihassanyare84@gmail.com" class="s-item white"><div class="ic">✉️</div><div><b>EMAIL ADDRESS</b><span>hanihassanyare84@gmail.com</span></div></a>
-      <a href="https://www.linkedin.com/in/hani-hassan-yare-03856a354" target="_blank" class="s-item green"><div class="ic">in</div><div><b>LINKEDIN PROFILE</b><span>linkedin.com/in/hani-hassan-yare</span></div></a>
-    </div>
-
-    <div class="divider"></div>
-
-    <form action="https://formsubmit.co/hanihassanyare84@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="NEW MESSAGE from NDMA Website">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_next" value="https://hani-portfolio.netlify.app/contact.html?sent=true">
-
-      <div class="field"><input type="text" name="Name" required placeholder="Your Full Name"></div>
-      <div class="field"><input type="email" name="Email" required placeholder="Your Email Address"></div>
-      <div class="field"><input type="text" name="Phone" required placeholder="Your Phone Number"></div>
-      <div class="field">
-        <select name="Issue" required>
-          <option value="">Select Issue Type</option>
-          <option>Network / Wi-Fi Issue</option>
-          <option>Email / Password Reset</option>
-          <option>Computer / Hardware</option>
-          <option>Urgent Support</option>
-        </select>
-      </div>
-      <div class="field"><textarea name="Message" rows="4" required placeholder="Hello Hani, I need help with..."></textarea></div>
-      <button type="submit" class="btn">🚀 SEND MESSAGE - Goes to My Email</button>
-    </form>
-
-    <a href="https://wa.me/254725467098?text=Hello%20Hani%20I%20am%20from%20NDMA%20website" target="_blank" class="btn2 wa">💬 Message on WhatsApp - 0725467098</a>
-    <a href="https://www.linkedin.com/in/hani-hassan-yare-03856a354" target="_blank" class="btn2 li">🔗 Message on LinkedIn</a>
-
-    <div id="ok" class="success">✅ Sent! Check hanihassanyare84@gmail.com - Message received!</div>
+  <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 20px; background:#fff; border-bottom:2px solid #0b4a2f;">
+  <div id="logoTrick" style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+    <img src="https://www.ndma.gov.pk/public/img/logo.png" height="35">
+    <strong style="color:#0b4a2f;">NDMA ICT Helpdesk</strong>
+  </div>
+  <div style="display:flex; gap:18px;">
+    <a href="home.html" target="_self">Home</a>
+    <a href="about.html" target="_self">About</a>
+    <a href="contact.html" target="_self">Contact</a>
+    <a href="faq.html" target="_self">FAQ</a>
+    <a href="admin.html" id="adminLink" style="display:none; color:red;">Admin</a>
   </div>
 </div>
 
 <script>
+let count=0;
+document.getElementById('logoTrick').onclick=()=>{
+  count++;
+  if(count>=3){document.getElementById('adminLink').style.display='block'; alert('Admin unlocked!'); count=0;}
+  setTimeout(()=>count=0,2000);
+}
+</script>
 if(window.location.href.includes('sent=true')){
  document.getElementById('ok').style.display='block';
 }

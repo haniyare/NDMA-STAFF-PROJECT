@@ -47,8 +47,6 @@ footer{background:#0b4a2e;color:white;text-align:center;padding:20px;margin-top:
 </style>
 </head>
 <body>
-
-<nav>
   <div class="logo-area">
     <img src="logo.png" alt="NDMA Logo">
     <h2>NDMA ICT Helpdesk</h2>
@@ -143,5 +141,33 @@ document.getElementById('searchInput').addEventListener('keyup', function(){
 });
 </script>
 
+</body>
+</html><nav>
+  <div class="logo-area" id="logoTrick">
+    <h2>NDMA ICT Helpdesk</h2>
+  </div>
+  <ul>
+    <li><a href="home.html" target="_self">Home</a></li>
+    <li><a href="about.html" target="_self">About</a></li>
+    <li><a href="contact.html" target="_self">Contact</a></li>
+    <li><a href="faq.html" target="_self" class="active">FAQ</a></li>
+    <li><a href="admin.html" id="adminLink" style="display:none;" target="_self">Admin</a></li>
+  </ul>
+</nav>
+</nav>
+
+<script>
+// ADMIN TRICK - click logo 3 times
+let c=0;
+document.getElementById('logoTrick').addEventListener('click', ()=>{
+ 
+  if(c>=3){
+    document.getElementById('adminLink').style.display='list-item';
+    alert('Admin unlocked!');
+    c=0;
+  }
+  setTimeout(()=>c=0,2000);
+});
+</script>
 </body>
 </html>
