@@ -1,53 +1,361 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Raise Ticket</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{background:#f6faf7}
-nav{background:white;padding:12px 30px;display:flex;justify-content:space-between;border-bottom:2px solid #111}
-nav h2{color:#0b4a2e;font-weight:800} nav a{margin-left:12px;text-decoration:none;color:#111;font-weight:700;font-size:13px}
-.box{max-width:600px;margin:30px auto;background:white;border:2px solid #111;border-radius:24px;overflow:hidden}
-.top{background:#0b4a2e;padding:25px;color:white;text-align:center}
-.top span{background:white;color:#0b4a2e;padding:6px 16px;border-radius:20px;font-weight:800;display:inline-block;margin-top:10px;border:2px solid #111}
-.body{padding:20px}
-input,select,textarea{width:100%;padding:12px;border:2px solid #111;border-radius:12px;margin-top:4px;background:#f9fdf9}
-label{font-weight:700;font-size:11px}
-.btn{width:100%;padding:14px;background:#111;color:white;border-radius:12px;font-weight:800;border:2px solid #111;cursor:pointer;margin-top:12px}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Submit a Ticket | NDMA Helpdesk</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f8f4;
+      color: #24352b;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #14532d;
+      color: white;
+      padding: 18px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .brand {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #bbf7d0;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #166534, #15803d);
+      color: white;
+      text-align: center;
+      padding: 55px 20px;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 850px;
+      margin: 40px auto;
+    }
+
+    .form-card {
+      background: white;
+      padding: 35px;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-card h2 {
+      color: #166534;
+      margin-bottom: 8px;
+    }
+
+    .intro {
+      color: #66756a;
+      margin-bottom: 25px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #cbd5ce;
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: inherit;
+      background: #fff;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: 2px solid #86efac;
+      border-color: #15803d;
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #15803d;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background: #14532d;
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.65;
+      cursor: wait;
+    }
+
+    #status {
+      margin-top: 18px;
+      padding: 12px;
+      border-radius: 8px;
+      display: none;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-card {
+      margin-top: 30px;
+      padding: 25px;
+      border-radius: 12px;
+      background: #e8f5e9;
+    }
+
+    .contact-card h3 {
+      color: #14532d;
+      margin-bottom: 12px;
+    }
+
+    .contact-card p {
+      margin: 10px 0;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-card a {
+      color: #166534;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .contact-card a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 50px;
+      background: #102d1c;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+    }
+
+    footer a {
+      color: #bbf7d0;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .form-card {
+        padding: 22px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<nav><h2>NDMA ICT Helpdesk</h2><div><a href="home.html">Home</a><a href="admin.html">Admin</a></div></nav>
 
-<div class="box">
-<div class="top"><h1>🎫 Raise Ticket</h1><span id="show">NDMA-001</span></div>
-<div class="body">
-<form id="f" action="https://formsubmit.co/hanihassanyare84@gmail.com" method="POST">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="Ticket_No" id="tid">
-<input type="hidden" name="_next" value="http://127.0.0.1:5500/admin.html">
-<label>Your Name *</label><input type="text" name="Name" required placeholder="Hani">
-<br><br>
-<label>Issue *</label><select name="Issue" required><option value="">Choose</option><option>Computer Slow</option><option>WiFi</option><option>Printer</option><option>Email</option></select>
-<br><br>
-<label>Details</label><textarea name="Details" rows="3" placeholder="My pc..."></textarea>
-<button class="btn" type="submit">SUBMIT - Auto Count</button>
-</form>
-</div>
-</div>
+  <header>
+    <div class="brand">NDMA Helpdesk</div>
 
-<script>
-let c = localStorage.getItem('ndma_ticket_count') ? parseInt(localStorage.getItem('ndma_ticket_count')) : 0;
-c++;
-let id = 'NDMA-' + String(c).padStart(3,'0');
-document.getElementById('show').innerText = id;
-document.getElementById('tid').value = id;
-document.getElementById('f').addEventListener('submit', ()=>{
- localStorage.setItem('ndma_ticket_count', c);
- localStorage.setItem('last_ticket', id);
-});
-</script>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="ticket.html">Submit Ticket</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="faq.html">FAQs</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Submit a Support Ticket</h1>
+    <p>
+      Need assistance? Tell us about your issue.
+      Our helpdesk team will review your request.
+    </p>
+  </section>
+
+  <main class="container">
+    <section class="form-card">
+      <h2>Ticket Submission Form</h2>
+      <p class="intro">
+        Complete the form below with accurate details.
+        Fields marked * are required.
+      </p>
+
+      <form id="ticketForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name"
+                   placeholder="Enter your full name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Your Email *</label>
+            <input type="email" id="email" name="email"
+                   placeholder="Enter your email" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone"
+                   placeholder="e.g. 0723456789" required>
+          </div>
+
+          <div class="form-group">
+            <label for="category">Issue Category *</label>
+            <select id="category" name="category" required>
+              <option value="">Select a category</option>
+              <option value="Technical Support">Technical Support</option>
+              <option value="Drought Information">Drought Information</option>
+              <option value="Relief Assistance">Relief Assistance</option>
+              <option value="Website Problem">Website Problem</option>
+              <option value="General Inquiry">General Inquiry</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Ticket Subject *</label>
+          <input type="text" id="subject" name="subject"
+                 placeholder="Briefly describe your issue" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Describe Your Issue *</label>
+          <textarea id="message" name="message"
+                    placeholder="Explain your issue in detail..."
+                    required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">
+          Submit Ticket
+        </button>
+
+        <div id="status" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <section class="contact-card">
+      <h3>Need to Contact Us Directly?</h3>
+
+      <p>
+        <strong>Email:</strong>
+        <a href="mailto:hanihasanyare4@gamli.com">
+          hanihasanyare4@gamli.com
+        </a>
+      </p>
+
+      <p>
+        <strong>Phone:</strong>
+        <a href="tel:0725467098">0725467098</a>
+      </p>
+
+      <p>
+        <strong>WhatsApp:</strong>
+        <a href="https://wa.me/254725467098"
+           target="_blank" rel="noopener noreferrer">
+          Message us on WhatsApp
+        </a>
+      </p>
+
+      <p>
+        <strong>LinkedIn:</strong>
+        <a href="https://www.linkedin.com/in/hani-hassan-yare-03856a354"
+           target="_blank" rel="noopener noreferrer">
+          Visit Hani's LinkedIn Profile
+        </a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 NDMA Helpdesk. All rights reserved.</p>
+    <p>Supporting communities through timely information and assistance.</p>
+    <p>
+      <a href="contact.html">Contact Us</a>
+      <a href="faq.html">FAQs</a>
+    </p>
+  </footer>
+
+  <!-- EmailJS setup goes here in Step 2 -->
+
 </body>
 </html>

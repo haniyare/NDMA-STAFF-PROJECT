@@ -1,98 +1,1075 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Dashboard</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NDMA Helpdesk Admin</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{background:linear-gradient(180deg,#052e1a 0%,#0b4a2e 30%,#f5f9f6 30%);min-height:100vh}
-nav{background:white;padding:12px 30px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #111}
-nav h2{color:#0b4a2e;font-weight:800} nav a{text-decoration:none;color:#111;font-weight:700;margin-left:12px;font-size:13px}
-.box{max-width:800px;margin:30px auto;background:white;border:2px solid #111;border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.2)}
-.top{background:linear-gradient(135deg,#020d06,#0b4a2e);padding:28px;color:white;text-align:center}
-.top h1{font-size:26px;font-weight:800}
-.cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding:20px}
-.c{background:#f6faf7;border:2px solid #111;border-radius:16px;padding:18px;text-align:center}
-.c .num{font-size:32px;font-weight:800;color:#0b4a2e}
-.c .lab{font-size:11px;font-weight:600;color:#555;margin-top:4px}
-.list{padding:0 20px 20px}
-.item{background:white;border:2px solid #111;border-radius:12px;padding:12px 16px;margin-top:10px;display:flex;justify-content:space-between;align-items:center}
-.item b{color:#0b4a2e}
-.btn{width:100%;padding:14px;background:#111;color:white;border-radius:12px;border:2px solid #111;font-weight:800;cursor:pointer;margin-top:15px}
-.btn:hover{background:#0b4a2e}
-#empty{text-align:center;padding:20px;color:#888;font-size:13px}
+:root {
+  --green: #087443;
+  --dark-green: #064e32;
+  --light-green: #e9f7ef;
+  --white: #ffffff;
+  --background: #f4f7f5;
+  --text: #24352c;
+  --muted: #718078;
+  --border: #e0e9e3;
+  --red: #dc3545;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
+  color: var(--text);
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* LOGIN */
+
+.login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #064e32, #10945a);
+}
+
+.login-card {
+  background: white;
+  width: 100%;
+  max-width: 420px;
+  padding: 38px;
+  border-radius: 18px;
+  box-shadow: 0 15px 50px #00351f44;
+}
+
+.logo {
+  width: 66px;
+  height: 66px;
+  background: var(--light-green);
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0 auto 18px;
+}
+
+.login-card h1 {
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+
+.login-card .subtitle {
+  color: var(--muted);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.field {
+  margin-bottom: 18px;
+}
+
+.field label {
+  display: block;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.field input {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  outline: none;
+}
+
+.field input:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px #08744318;
+}
+
+.primary-btn {
+  background: var(--green);
+  color: white;
+  border: none;
+  border-radius: 9px;
+  padding: 13px 18px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.primary-btn:hover {
+  background: var(--dark-green);
+}
+
+.login-card .primary-btn {
+  width: 100%;
+}
+
+.message {
+  font-size: 13px;
+  margin-top: 15px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.error {
+  color: var(--red);
+}
+
+.success {
+  color: var(--green);
+}
+
+.login-footer {
+  margin-top: 25px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* DASHBOARD LAYOUT */
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 245px;
+  background: var(--dark-green);
+  color: white;
+  padding: 25px 16px;
+  flex-shrink: 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 10px 30px;
+  border-bottom: 1px solid #ffffff25;
+}
+
+.brand-icon {
+  width: 43px;
+  height: 43px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  background: white;
+  color: var(--green);
+  font-weight: bold;
+}
+
+.brand h2 {
+  font-size: 17px;
+}
+
+.brand p {
+  font-size: 11px;
+  color: #c8e6d5;
+  margin-top: 5px;
+}
+
+.nav-title {
+  color: #b6d9c5;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 27px 10px 12px;
+}
+
+.nav-link {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 13px;
+  margin-bottom: 7px;
+  color: #e5f4eb;
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  font-size: 14px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: #ffffff20;
+  color: white;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+}
+
+.topbar {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  padding: 20px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.topbar h1 {
+  font-size: 23px;
+}
+
+.topbar p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.admin-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 39px;
+  height: 39px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--light-green);
+  color: var(--green);
+  font-weight: bold;
+}
+
+.admin-profile small {
+  color: var(--muted);
+}
+
+.logout-btn {
+  padding: 9px 13px;
+  background: white;
+  color: var(--red);
+  border: 1px solid #f0c7cc;
+  border-radius: 8px;
+}
+
+.content {
+  padding: 30px;
+}
+
+.welcome {
+  background: linear-gradient(120deg, #087443, #13a064);
+  color: white;
+  padding: 26px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+}
+
+.welcome h2 {
+  margin-bottom: 10px;
+  font-size: 23px;
+}
+
+.welcome p {
+  line-height: 1.7;
+  font-size: 14px;
+  color: #e4f8ec;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.stat-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  padding: 21px;
+}
+
+.stat-card p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.stat-card h3 {
+  font-size: 29px;
+  margin-top: 13px;
+  color: var(--green);
+}
+
+.panel {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+.panel-heading {
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.panel-heading h2 {
+  font-size: 18px;
+}
+
+.panel-body {
+  padding: 20px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.toolbar input,
+.toolbar select {
+  border: 1px solid var(--border);
+  padding: 11px;
+  border-radius: 8px;
+  background: white;
+  min-width: 150px;
+}
+
+.toolbar input {
+  flex: 1;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 650px;
+}
+
+th, td {
+  padding: 15px 13px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  font-size: 13px;
+}
+
+th {
+  color: var(--muted);
+  font-size: 12px;
+  background: #f9fbf9;
+}
+
+td {
+  line-height: 1.5;
+}
+
+.status {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.status.Open {
+  background: #fff1d6;
+  color: #996000;
+}
+
+.status.Closed {
+  background: #e0f6e9;
+  color: #087443;
+}
+
+.action-btn {
+  border: 1px solid var(--border);
+  background: white;
+  border-radius: 6px;
+  padding: 7px 9px;
+  margin: 2px;
+  font-size: 12px;
+}
+
+.action-btn:hover {
+  background: var(--light-green);
+}
+
+.action-btn.delete {
+  color: var(--red);
+}
+
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 35px;
+}
+
+.section-title {
+  margin-bottom: 20px;
+}
+
+.section-title h2 {
+  font-size: 23px;
+  margin-bottom: 8px;
+}
+
+.section-title p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.notice {
+  background: #fff6dc;
+  color: #745400;
+  border-radius: 9px;
+  padding: 15px;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.footer {
+  padding: 22px 30px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media (max-width: 1050px) {
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .app-layout {
+    display: block;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .brand {
+    padding-bottom: 15px;
+  }
+
+  .nav-title {
+    margin-top: 15px;
+  }
+
+  .nav-link {
+    display: inline-block;
+    width: auto;
+    padding: 10px;
+  }
+
+  .topbar {
+    padding: 18px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .topbar h1 {
+    font-size: 20px;
+  }
+
+  .content {
+    padding: 15px;
+  }
+
+  .stats {
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 14px;
+  }
+
+  .stat-card h3 {
+    font-size: 24px;
+  }
+
+  .welcome {
+    padding: 20px;
+  }
+
+  .login-card {
+    padding: 25px;
+  }
+}
 </style>
 </head>
+
 <body>
-<nav><h2>NDMA ICT Helpdesk</h2><div><a href="home.html">Home</a><a href="admin.html">Admin</a></div></nav>
 
-<div class="box">
-<div class="top">
-<h1>📊 Admin Dashboard</h1>
-<p style="font-size:12px;margin-top:6px;opacity:0.9">Auto Counting System - Hani 0725467098</p>
-</div>
+<!-- LOGIN SCREEN -->
+<section id="loginScreen" class="login-screen">
+  <div class="login-card">
+    <div class="logo">NDMA</div>
 
-<div class="cards">
-<div class="c"><div class="num" id="total">0</div><div class="lab">Total Tickets<br>Auto Adding</div></div>
-<div class="c"><div class="num" id="last">-</div><div class="lab">Last Ticket No</div></div>
-<div class="c"><div class="num" id="rtotal">0</div><div class="lab">Password Resets<br>Auto Adding</div></div>
-</div>
+    <h1>Admin Login</h1>
+    <p class="subtitle">
+      NDMA Helpdesk Management System<br>
+      Sign in to manage helpdesk tickets.
+    </p>
 
-<div style="display:flex; justify-content:space-between; align-items:center; padding:10px 20px; background:#fff; border-bottom:2px solid #0b4a2f;">
-  <div id="logoTrick" style="display:flex; align-items:center; gap:8px; cursor:pointer;">
-    <img src="https://www.ndma.gov.pk/public/img/logo.png" height="35">
-    <strong style="color:#0b4a2f;">NDMA ICT Helpdesk</strong>
+    <form id="loginForm">
+      <div class="field">
+        <label for="username">Admin username</label>
+        <input
+          id="username"
+          type="text"
+          placeholder="Enter username"
+          autocomplete="username"
+          required
+        >
+      </div>
+
+      <div class="field">
+        <label for="password">Admin password</label>
+        <input
+          id="password"
+          type="password"
+          placeholder="Enter password"
+          autocomplete="current-password"
+          required
+        >
+      </div>
+
+      <button class="primary-btn" type="submit">
+        Sign In
+      </button>
+
+      <p id="loginMessage" class="message" role="alert"></p>
+    </form>
+
+    <p class="login-footer">
+      National Drought Management Authority<br>
+      Helpdesk Administration
+    </p>
   </div>
-  <div style="display:flex; gap:18px;">
-    <a href="home.html" target="_self">Home</a>
-    <a href="about.html" target="_self">About</a>
-    <a href="contact.html" target="_self">Contact</a>
-    <a href="faq.html" target="_self">FAQ</a>
-    <a href="admin.html" id="adminLink" style="display:none; color:red;">Admin</a>
-  </div>
+</section>
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="app-layout hidden">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">NDMA</div>
+      <div>
+        <h2>NDMA Helpdesk</h2>
+        <p>Admin Portal</p>
+      </div>
+    </div>
+
+    <p class="nav-title">MAIN MENU</p>
+
+    <button class="nav-link active" data-page="overview">
+      ▦ &nbsp; Dashboard
+    </button>
+
+    <button class="nav-link" data-page="tickets">
+      ▤ &nbsp; Manage Tickets
+    </button>
+
+    <button class="nav-link" data-page="about">
+      ℹ &nbsp; About System
+    </button>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <h1 id="pageTitle">Dashboard</h1>
+        <p>Monitor and manage helpdesk requests.</p>
+      </div>
+
+      <div class="admin-profile">
+        <div class="avatar">A</div>
+        <div>
+          <strong>Administrator</strong><br>
+          <small>Admin account</small>
+        </div>
+        <button id="logoutBtn" class="logout-btn">
+          Logout
+        </button>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <!-- OVERVIEW -->
+      <section id="overviewPage">
+        <div class="welcome">
+          <h2>Welcome to NDMA Helpdesk 👋</h2>
+          <p>
+            Manage submitted tickets, monitor their status, and keep
+            helpdesk requests organized in one place.
+          </p>
+        </div>
+
+        <div class="stats">
+          <div class="stat-card">
+            <p>Total Tickets</p>
+            <h3 id="totalCount">0</h3>
+          </div>
+
+          <div class="stat-card">
+            <p>Open Tickets</p>
+            <h3 id="openCount">0</h3>
+          </div>
+
+          <div class="stat-card">
+            <p>Closed Tickets</p>
+            <h3 id="closedCount">0</h3>
+          </div>
+
+          <div class="stat-card">
+            <p>Today's Tickets</p>
+            <h3 id="todayCount">0</h3>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-heading">
+            <h2>Recent Tickets</h2>
+            <button class="primary-btn" id="viewAllBtn">
+              View All
+            </button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Ticket ID</th>
+                  <th>Subject</th>
+                  <th>Requester</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="recentTickets"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TICKETS -->
+      <section id="ticketsPage" class="hidden">
+        <div class="section-title">
+          <h2>Manage Helpdesk Tickets</h2>
+          <p>Search, view, close, or delete demonstration tickets.</p>
+        </div>
+
+        <div class="notice">
+          These are sample tickets for demonstration. This page does
+          not yet receive tickets submitted through your public website.
+        </div>
+
+        <div class="panel">
+          <div class="panel-heading">
+            <h2>All Tickets</h2>
+            <button id="resetDemoBtn" class="action-btn">
+              Reset Sample Data
+            </button>
+          </div>
+
+          <div class="panel-body">
+            <div class="toolbar">
+              <input
+                id="searchInput"
+                type="search"
+                placeholder="Search ID, name, email, or subject..."
+              >
+
+              <select id="statusFilter" aria-label="Filter tickets by status">
+                <option value="All">All statuses</option>
+                <option value="Open">Open</option>
+                <option value="Closed">Closed</option>
+              </select>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Ticket ID</th>
+                    <th>Subject</th>
+                    <th>Requester</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="allTickets"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="aboutPage" class="hidden">
+        <div class="section-title">
+          <h2>About the Helpdesk</h2>
+          <p>Information about this administration demo.</p>
+        </div>
+
+        <div class="panel">
+          <div class="panel-body">
+            <h3>NDMA Helpdesk Management System</h3>
+            <br>
+            <p style="line-height:1.8">
+              This dashboard is a front-end demonstration designed to
+              show how administrators could manage helpdesk tickets.
+              It includes ticket search, status updates, sample statistics,
+              and local browser storage.
+              <br><br>
+              To use it in a real helpdesk, connect it to a secure backend
+              that verifies administrator accounts and stores real tickets
+              in a database.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <footer class="footer">
+      © <span id="year"></span> NDMA Helpdesk · Administration Demo
+    </footer>
+  </main>
 </div>
 
 <script>
-let count=0;
-document.getElementById('logoTrick').onclick=()=>{
-  count++;
-  if(count>=3){document.getElementById('adminLink').style.display='block'; alert('Admin unlocked!'); count=0;}
-  setTimeout(()=>count=0,2000);
-}
-</script>
-// Read auto numbers
-let total = localStorage.getItem('ndma_ticket_count') || 0;
-let last = localStorage.getItem('last_ticket') || '-';
-let rtotal = localStorage.getItem('ndma_reset_count') || 0;
-let rlast = localStorage.getItem('last_reset') || '-';
+/*
+  DEMO LOGIN ONLY — NOT SECURE FOR A PUBLIC WEBSITE.
 
-document.getElementById('total').innerText = total;
-document.getElementById('last').innerText = last;
-document.getElementById('rtotal').innerText = rtotal;
+  Demo username: admin
+  Demo password: NDMA@2026
 
-// Show list with auto numbers
-let list = document.getElementById('list');
-let html = '';
-if(total>0){
- for(let i=total;i>=1 && i>total-5;i--){
-   html+=`<div class="item"><span>🎫 <b>NDMA-${String(i).padStart(3,'0')}</b> - ICT Ticket</span><span style="font-size:11px">Auto Added</span></div>`;
- }
-}
-if(rtotal>0){
- for(let i=rtotal;i>=1 && i>rtotal-3;i--){
-   html+=`<div class="item"><span>🔒 <b>RST-${String(i).padStart(3,'0')}</b> - Password Reset</span><span style="font-size:11px">Auto Added</span></div>`;
- }
-}
-if(html!=''){list.innerHTML=html;document.getElementById('empty').style.display='none';}
+  Change these values for local testing only.
+  A real application must authenticate on the server.
+*/
 
-// Animate numbers
-document.querySelectorAll('.num').forEach(el=>{
- if(el.innerText!='-' && !isNaN(parseInt(el.innerText))){
-   let t=parseInt(el.innerText),c=0,inc=t/50||1;
-   let timer=setInterval(()=>{c+=inc;if(c>=t){el.innerText=el.id=='last'||el.id.includes('last')?last:t;clearInterval(timer);}else el.innerText=Math.floor(c);},20);
- }
+const DEMO_USERNAME = "admin";
+const DEMO_PASSWORD = "NDMA@2026";
+
+const sampleTickets = [
+  {
+    id: "NDMA-1001",
+    subject: "Help with drought assistance",
+    name: "Sample User One",
+    email: "user1@example.com",
+    message: "I would like information about drought assistance.",
+    date: new Date().toISOString().slice(0, 10),
+    status: "Open"
+  },
+  {
+    id: "NDMA-1002",
+    subject: "Request for information",
+    name: "Sample User Two",
+    email: "user2@example.com",
+    message: "Please provide information about available services.",
+    date: new Date().toISOString().slice(0, 10),
+    status: "Closed"
+  },
+  {
+    id: "NDMA-1003",
+    subject: "Community support inquiry",
+    name: "Sample User Three",
+    email: "user3@example.com",
+    message: "I need more information about community support.",
+    date: new Date().toISOString().slice(0, 10),
+    status: "Open"
+  }
+];
+
+const STORAGE_KEY = "ndma_helpdesk_demo_tickets";
+const SESSION_KEY = "ndma_demo_admin_logged_in";
+
+const loginScreen = document.getElementById("loginScreen");
+const dashboard = document.getElementById("dashboard");
+const loginForm = document.getElementById("loginForm");
+const loginMessage = document.getElementById("loginMessage");
+
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, function(char) {
+    return {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#039;"
+    }[char];
+  });
+}
+
+function getTickets() {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return stored === null ? [...sampleTickets] : JSON.parse(stored);
+  } catch (error) {
+    return [...sampleTickets];
+  }
+}
+
+function saveTickets(tickets) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(tickets));
+}
+
+function showDashboard() {
+  loginScreen.classList.add("hidden");
+  dashboard.classList.remove("hidden");
+  document.getElementById("year").textContent = new Date().getFullYear();
+  renderDashboard();
+}
+
+function showLogin() {
+  dashboard.classList.add("hidden");
+  loginScreen.classList.remove("hidden");
+  loginForm.reset();
+  loginMessage.textContent = "";
+  loginMessage.className = "message";
+}
+
+loginForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value;
+
+  if (username === DEMO_USERNAME && password === DEMO_PASSWORD) {
+    sessionStorage.setItem(SESSION_KEY, "true");
+    loginMessage.textContent = "";
+    showDashboard();
+  } else {
+    loginMessage.textContent = "Incorrect username or password. Please try again.";
+    loginMessage.className = "message error";
+  }
 });
+
+document.getElementById("logoutBtn").addEventListener("click", function() {
+  sessionStorage.removeItem(SESSION_KEY);
+  showLogin();
+});
+
+function renderDashboard() {
+  const tickets = getTickets();
+  const today = new Date().toISOString().slice(0, 10);
+
+  document.getElementById("totalCount").textContent = tickets.length;
+  document.getElementById("openCount").textContent =
+    tickets.filter(ticket => ticket.status === "Open").length;
+  document.getElementById("closedCount").textContent =
+    tickets.filter(ticket => ticket.status === "Closed").length;
+  document.getElementById("todayCount").textContent =
+    tickets.filter(ticket => ticket.date === today).length;
+
+  const recent = [...tickets].slice(-5).reverse();
+  const recentBody = document.getElementById("recentTickets");
+
+  recentBody.innerHTML = recent.length
+    ? recent.map(ticket => `
+      <tr>
+        <td>${escapeHTML(ticket.id)}</td>
+        <td>${escapeHTML(ticket.subject)}</td>
+        <td>${escapeHTML(ticket.name)}</td>
+        <td>${escapeHTML(ticket.date)}</td>
+        <td><span class="status ${escapeHTML(ticket.status)}">${escapeHTML(ticket.status)}</span></td>
+      </tr>
+    `).join("")
+    : `<tr><td colspan="5" class="empty">No tickets available.</td></tr>`;
+
+  renderTickets();
+}
+
+function renderTickets() {
+  const tickets = [...getTickets()].reverse();
+  const query = document.getElementById("searchInput").value.toLowerCase().trim();
+  const status = document.getElementById("statusFilter").value;
+
+  const filtered = tickets.filter(ticket => {
+    const matchesSearch = [
+      ticket.id,
+      ticket.subject,
+      ticket.name,
+      ticket.email
+    ].some(value => String(value || "").toLowerCase().includes(query));
+
+    const matchesStatus = status === "All" || ticket.status === status;
+    return matchesSearch && matchesStatus;
+  });
+
+  const body = document.getElementById("allTickets");
+
+  body.innerHTML = filtered.length
+    ? filtered.map(ticket => `
+      <tr>
+        <td>${escapeHTML(ticket.id)}</td>
+        <td>${escapeHTML(ticket.subject)}</td>
+        <td>
+          ${escapeHTML(ticket.name)}<br>
+          <small>${escapeHTML(ticket.email)}</small>
+        </td>
+        <td>${escapeHTML(ticket.date)}</td>
+        <td>
+          <span class="status ${escapeHTML(ticket.status)}">
+            ${escapeHTML(ticket.status)}
+          </span>
+        </td>
+        <td>
+          <button class="action-btn" data-action="view" data-id="${escapeHTML(ticket.id)}">
+            View
+          </button>
+          <button class="action-btn" data-action="toggle" data-id="${escapeHTML(ticket.id)}">
+            ${ticket.status === "Open" ? "Close" : "Reopen"}
+          </button>
+          <button class="action-btn delete" data-action="delete" data-id="${escapeHTML(ticket.id)}">
+            Delete
+          </button>
+        </td>
+      </tr>
+    `).join("")
+    : `<tr><td colspan="6" class="empty">No matching tickets found.</td></tr>`;
+}
+
+document.getElementById("allTickets").addEventListener("click", function(event) {
+  const button = event.target.closest("button[data-action]");
+  if (!button) return;
+
+  const action = button.dataset.action;
+  const id = button.dataset.id;
+  const tickets = getTickets();
+  const ticket = tickets.find(item => item.id === id);
+
+  if (!ticket) return;
+
+  if (action === "view") {
+    alert(
+      "Ticket: " + ticket.id +
+      "\nSubject: " + ticket.subject +
+      "\nRequester: " + ticket.name +
+      "\nEmail: " + ticket.email +
+      "\nDate: " + ticket.date +
+      "\nStatus: " + ticket.status +
+      "\n\nMessage:\n" + ticket.message
+    );
+  }
+
+  if (action === "toggle") {
+    ticket.status = ticket.status === "Open" ? "Closed" : "Open";
+    saveTickets(tickets);
+    renderDashboard();
+  }
+
+  if (action === "delete") {
+    if (confirm("Are you sure you want to delete ticket " + id + "?")) {
+      saveTickets(tickets.filter(item => item.id !== id));
+      renderDashboard();
+    }
+  }
+});
+
+document.getElementById("searchInput").addEventListener("input", renderTickets);
+document.getElementById("statusFilter").addEventListener("change", renderTickets);
+
+document.getElementById("viewAllBtn").addEventListener("click", function() {
+  showPage("tickets");
+});
+
+document.getElementById("resetDemoBtn").addEventListener("click", function() {
+  if (confirm("Reset all demo tickets to the original sample data?")) {
+    saveTickets([...sampleTickets]);
+    renderDashboard();
+  }
+});
+
+function showPage(page) {
+  const pages = {
+    overview: "overviewPage",
+    tickets: "ticketsPage",
+    about: "aboutPage"
+  };
+
+  Object.values(pages).forEach(id => {
+    document.getElementById(id).classList.add("hidden");
+  });
+
+  document.getElementById(pages[page]).classList.remove("hidden");
+
+  document.querySelectorAll(".nav-link").forEach(button => {
+    button.classList.toggle("active", button.dataset.page === page);
+  });
+
+  const titles = {
+    overview: "Dashboard",
+    tickets: "Manage Tickets",
+    about: "About System"
+  };
+
+  document.getElementById("pageTitle").textContent = titles[page];
+}
+
+document.querySelectorAll(".nav-link").forEach(button => {
+  button.addEventListener("click", function() {
+    showPage(button.dataset.page);
+  });
+});
+
+// Initialize demo data only if it has not been saved before.
+if (localStorage.getItem(STORAGE_KEY) === null) {
+  saveTickets([...sampleTickets]);
+}
+
+// Keep the dashboard visible only during this browser tab's demo session.
+if (sessionStorage.getItem(SESSION_KEY) === "true") {
+  showDashboard();
+} else {
+  showLogin();
+}
 </script>
+
 </body>
 </html>

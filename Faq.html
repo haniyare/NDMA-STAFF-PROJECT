@@ -1,173 +1,856 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NDMA ICT Helpdesk | FAQ</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{background:#f5f8f6}
-nav{background:white;padding:12px 30px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,0.05);position:sticky;top:0;z-index:1000}
-nav .logo-area{display:flex;align-items:center;gap:12px}
-nav .logo-area img{width:55px;height:55px;border-radius:50%;background:white;animation:floatGlow 3s ease-in-out infinite}
-@keyframes floatGlow{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-nav h2{color:#0b4a2e;font-size:18px}
-nav ul{display:flex;list-style:none;gap:20px}
-nav ul li a{text-decoration:none;color:#333;font-weight:600}
-nav ul li a.active, nav ul li a:hover{color:#1a8a5a}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-.header{background:linear-gradient(135deg,#0b4a2e 0%, #1a8a5a 100%);color:white;padding:70px 20px;text-align:center;position:relative;overflow:hidden}
-.header::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);animation:shine 6s infinite}
-@keyframes shine{0%{transform:translate(0,0)}50%{transform:translate(10%,10%)}100%{transform:translate(0,0)}}
-.header h1{font-size:42px;position:relative}
-.header p{opacity:0.9;margin-top:8px;position:relative}
+    <title>FAQs | NDMA ICT Support Helpdesk</title>
 
-/* Search */
-.search-box{max-width:600px;margin:-25px auto 30px;background:white;padding:8px;border-radius:50px;box-shadow:0 10px 30px rgba(0,0,0,0.1);display:flex;align-items:center;gap:10px;position:relative;z-index:5}
-.search-box input{flex:1;border:none;outline:none;padding:12px 20px;font-size:15px;border-radius:50px}
-.search-box button{background:#0b4a2e;color:white;border:none;padding:10px 20px;border-radius:50px;cursor:pointer;font-weight:600}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-/* Tabs Slider */
-.tabs{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:20px auto;max-width:900px;padding:0 20px}
-.tab{padding:10px 22px;border-radius:30px;background:white;cursor:pointer;font-weight:600;color:#0b4a2e;border:2px solid #e8f5e9;transition:0.3s}
-.tab.active, .tab:hover{background:#0b4a2e;color:white;border-color:#0b4a2e;transform:translateY(-2px)}
+        :root {
+            --green: #064e3b;
+            --dark-green: #022c22;
+            --light-green: #ecfdf5;
+            --accent: #16a34a;
+            --white: #ffffff;
+            --text: #24352c;
+            --muted: #64748b;
+        }
 
-/* FAQ */
-.faq-container{max-width:850px;margin:30px auto;padding:0 20px 40px}
-.faq-item{background:white;margin-bottom:16px;border-radius:16px;box-shadow:0 5px 20px rgba(0,0,0,0.06);overflow:hidden;transform:translateY(0);transition:0.3s;border-left:4px solid transparent}
-.faq-item:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,0.1);border-left-color:#1a8a5a}
-.faq-question{padding:18px 22px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:#222;font-size:16px}
-.faq-question span.icon{width:32px;height:32px;background:#e8f5e9;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#0b4a2e;transition:0.3s}
-.faq-item.active .faq-question span.icon{background:#0b4a2e;color:white;transform:rotate(180deg)}
-.faq-answer{padding:0 22px;max-height:0;overflow:hidden;transition:all 0.4s ease;color:#555;line-height:1.7;font-size:14.5px}
-.faq-item.active .faq-answer{padding:0 22px 20px;max-height:400px}
-.faq-item.hide{display:none}
-footer{background:#0b4a2e;color:white;text-align:center;padding:20px;margin-top:20px}
-</style>
+        body {
+            background: #f5f8f6;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* NAVBAR */
+        header {
+            background: var(--dark-green);
+            color: white;
+            padding: 15px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 15px #00000015;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand img {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+            background: white;
+            padding: 4px;
+            border-radius: 8px;
+        }
+
+        .brand h2 {
+            font-size: 20px;
+            line-height: 1.3;
+        }
+
+        .brand p {
+            font-size: 12px;
+            color: #bbf7d0;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #86efac;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(
+                135deg,
+                #022c22,
+                #065f46
+            );
+            color: white;
+            text-align: center;
+            padding: 75px 20px 85px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 7px 16px;
+            border: 1px solid #ffffff55;
+            background: #ffffff14;
+            border-radius: 30px;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            margin-bottom: 14px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #d1fae5;
+            font-size: 16px;
+        }
+
+        /* SEARCH */
+        .search-box {
+            max-width: 650px;
+            width: 90%;
+            margin: -30px auto 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 19px 22px;
+            border: 1px solid #dce8df;
+            border-radius: 12px;
+            background: white;
+            font-size: 15px;
+            outline: none;
+            box-shadow: 0 10px 30px #00000012;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px #16a34a20;
+        }
+
+        /* MAIN */
+        .container {
+            width: 88%;
+            max-width: 1000px;
+            margin: 50px auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-heading h2 {
+            font-size: 30px;
+            color: var(--green);
+            margin-bottom: 8px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+        }
+
+        /* CATEGORY BUTTONS */
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .category-btn {
+            padding: 10px 18px;
+            border: 1px solid #d6e4da;
+            background: white;
+            color: var(--green);
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--green);
+            color: white;
+            border-color: var(--green);
+        }
+
+        /* FAQ ITEMS */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+        }
+
+        .faq-item {
+            background: white;
+            border: 1px solid #e1eae4;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: #9ccbb0;
+            box-shadow: 0 5px 18px #064e3b0a;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: white;
+            border: none;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            text-align: left;
+            cursor: pointer;
+            color: var(--green);
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .faq-question:hover {
+            background: #f8fcf9;
+        }
+
+        .faq-question .plus {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            background: var(--light-green);
+            color: var(--green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+            transition: 0.3s;
+        }
+
+        .faq-item.open .plus {
+            background: var(--green);
+            color: white;
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 20px 22px;
+            color: #59685f;
+            font-size: 14px;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        .faq-answer a {
+            color: var(--green);
+            font-weight: bold;
+        }
+
+        .faq-answer a:hover {
+            text-decoration: underline;
+        }
+
+        .no-results {
+            display: none;
+            background: white;
+            border: 1px solid #e1eae4;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            color: var(--muted);
+        }
+
+        /* CONTACT SUPPORT */
+        .support-section {
+            background: var(--light-green);
+            border: 1px solid #d5e9dc;
+            border-radius: 16px;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        .support-icon {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .support-section h2 {
+            color: var(--green);
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        .support-section p {
+            color: var(--muted);
+            margin-bottom: 22px;
+        }
+
+        .support-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 23px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--green);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-green);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--green);
+            color: var(--green);
+            background: white;
+        }
+
+        .btn-secondary:hover {
+            background: #dcfce7;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark-green);
+            color: white;
+            text-align: center;
+            padding: 28px 15px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            color: #d1fae5;
+            font-size: 13px;
+            margin: 5px 0;
+        }
+
+        footer strong {
+            color: #86efac;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 800px) {
+            header {
+                justify-content: center;
+            }
+
+            nav {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .container {
+                width: 92%;
+            }
+
+            .brand h2 {
+                font-size: 17px;
+            }
+
+            nav {
+                gap: 13px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .faq-question {
+                padding: 16px;
+                font-size: 14px;
+            }
+
+            .faq-answer {
+                padding: 0 16px 18px;
+            }
+
+            .category-btn {
+                padding: 9px 13px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <div class="logo-area">
-    <img src="logo.png" alt="NDMA Logo">
-    <h2>NDMA ICT Helpdesk</h2>
-  </div>
-  <ul>
-    <li><a href="home.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="Faq.html" class="active">FAQ</a></li>
-  </ul>
-</nav>
 
-<div class="header">
-  <h1>How Can We Help You?</h1>
-  <p>Search or browse categories for instant ICT solutions</p>
-</div>
+    <!-- NAVIGATION -->
+    <header>
+        <div class="brand">
+            <img
+                src="images/ndma-logo.png"
+                alt="NDMA logo"
+                onerror="this.style.display='none'"
+            >
 
-<div class="search-box">
-  <input type="text" id="searchInput" placeholder="Search for Wi-Fi, email, password...">
-  <button>Search</button>
-</div>
+            <div>
+                <h2>NDMA ICT SUPPORT</h2>
+                <p>Technical Support Helpdesk</p>
+            </div>
+        </div>
 
-<div class="tabs">
-  <div class="tab active" data-filter="all">All Questions</div>
-  <div class="tab" data-filter="email">Email</div>
-  <div class="tab" data-filter="network">Network</div>
-  <div class="tab" data-filter="hardware">Hardware</div>
-  <div class="tab" data-filter="security">Security</div>
-</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="ticket.html">Tickets</a>
+            <a href="faq.html" class="active">FAQs</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
 
-<div class="faq-container" id="faqList">
-  <!-- EMAIL -->
-  <div class="faq-item" data-category="email"><div class="faq-question">How do I reset my NDMA email password? <span class="icon">▼</span></div><div class="faq-answer">Contact ICT via ticket or visit Room 203. Password reset within 30 minutes. You need your Staff ID.</div></div>
-  <div class="faq-item" data-category="email"><div class="faq-question">Why am I not receiving external emails? <span class="icon">▼</span></div><div class="faq-answer">Check Spam/Junk folder. If not there, your mailbox may be full. Clear old emails or contact ICT to increase quota.</div></div>
-  <div class="faq-item" data-category="email"><div class="faq-question">How to setup NDMA email on my phone? <span class="icon">▼</span></div><div class="faq-answer">Use Outlook App > Add Account > Exchange > email: yourname@ndma.go.ke > Server: outlook.office365.com</div></div>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <span class="hero-label">HELP CENTRE</span>
 
-  <!-- NETWORK -->
-  <div class="faq-item" data-category="network"><div class="faq-question">Wi-Fi connected but no internet? <span class="icon">▼</span></div><div class="faq-answer">1. Forget network and reconnect 2. Restart laptop 3. Check if other staff have same issue. If yes, it's a central outage - we are fixing.</div></div>
-  <div class="faq-item" data-category="network"><div class="faq-question">What is the Wi-Fi password for guests? <span class="icon">▼</span></div><div class="faq-answer">Guest Wi-Fi: NDMA-GUEST. Password changes weekly. Request from ICT Helpdesk with visitor name and ID.</div></div>
-  <div class="faq-item" data-category="network"><div class="faq-question">How to get VPN for working from home? <span class="icon">▼</span></div><div class="faq-answer">Email ict@ndma.go.ke with Staff ID, department, and HOD approval. VPN credentials will be sent securely.</div></div>
-  <div class="faq-item" data-category="network"><div class="faq-question">Internet is very slow in my office block? <span class="icon">▼</span></div><div class="faq-answer">Peak hours 10am-12pm may be slow. If persistent, raise a ticket with your floor & room number. We will check the access point.</div></div>
+        <h1>Frequently Asked Questions</h1>
 
-  <!-- HARDWARE -->
-  <div class="faq-item" data-category="hardware"><div class="faq-question">My computer is not powering on? <span class="icon">▼</span></div><div class="faq-answer">Check power cable and extension. Try different socket. If beeping sound, note the beep pattern and call Ext 231.</div></div>
-  <div class="faq-item" data-category="hardware"><div class="faq-question">How to request a new laptop / printer? <span class="icon">▼</span></div><div class="faq-answer">Download Equipment Request Form from intranet, get HOD signature, submit to ICT. Processing 2-3 working days.</div></div>
-  <div class="faq-item" data-category="hardware"><div class="faq-question">Printer shows offline error? <span class="icon">▼</span></div><div class="faq-answer">1. Check USB/Network cable 2. Restart printer 3. On your PC, go to Control Panel > Devices and Printers > Right-click > Use Printer Online.</div></div>
-  <div class="faq-item" data-category="hardware"><div class="faq-question">My projector is not displaying? <span class="icon">▼</span></div><div class="faq-answer">Press Windows + P and select Duplicate. Check HDMI/VGA cable. For boardroom projectors, use remote Input > HDMI 1.</div></div>
+        <p>
+            Find answers to common ICT problems and learn how to get
+            technical assistance through the NDMA ICT Support Helpdesk.
+        </p>
+    </section>
 
-  <!-- SECURITY -->
-  <div class="faq-item" data-category="security"><div class="faq-question">I clicked a suspicious email link, what to do? <span class="icon">▼</span></div><div class="faq-answer">IMMEDIATELY disconnect from internet, DO NOT enter password, and call ICT Security Team Ext 231. Change your password after.</div></div>
-  <div class="faq-item" data-category="security"><div class="faq-question">How to protect my files from ransomware? <span class="icon">▼</span></div><div class="faq-answer">Always backup to OneDrive, don't open .exe from email, keep antivirus updated. ICT runs daily backup at 6pm.</div></div>
-  <div class="faq-item" data-category="security"><div class="faq-question">Is it safe to use personal flash disks? <span class="icon">▼</span></div><div class="faq-answer">Scan with antivirus first. Personal USBs are blocked on some systems. Use NDMA OneDrive for file transfer instead.</div></div>
-  <div class="faq-item" data-category="security"><div class="faq-question">Who do I contact for urgent help? <span class="icon">▼</span></div><div class="faq-answer">For critical outage/security: Call Ext 231 or visit 2nd Floor ICT Office. WhatsApp Helpdesk: 0712 345 678. 8am-5pm Mon-Fri.</div></div>
-</div>
+    <!-- SEARCH BAR -->
+    <div class="search-box">
+        <input
+            type="search"
+            id="faqSearch"
+            placeholder="🔍  Search questions... e.g. password, email, network"
+            aria-label="Search frequently asked questions"
+        >
+    </div>
 
-<footer><p>&copy; 2026 NDMA ICT Helpdesk | Your Digital Partner</p></footer>
+    <!-- FAQ CONTENT -->
+    <main class="container">
 
-<script>
-// Accordion slider animation
-document.querySelectorAll('.faq-question').forEach(q => {
-  q.addEventListener('click', () => {
-    const item = q.parentElement;
-    const wasActive = item.classList.contains('active');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-    if(!wasActive) item.classList.add('active');
-  });
-});
+        <div class="section-heading">
+            <h2>How Can We Help You?</h2>
+            <p>Select a category or click a question to view its answer.</p>
+        </div>
 
-// Tabs filter - Beautiful slide
-document.querySelectorAll('.tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    const filter = tab.dataset.filter;
-    document.querySelectorAll('.faq-item').forEach(item => {
-      item.style.transform = 'translateY(10px)'; 
-      setTimeout(() => {
-        if(filter === 'all' || item.dataset.category === filter) item.classList.remove('hide');
-        else item.classList.add('hide');
-        item.style.transform = 'translateY(0)';
-      }, 150);
-    });
-  });
-});
+        <!-- CATEGORY FILTERS -->
+        <div class="categories">
+            <button class="category-btn active" data-category="all">
+                All Questions
+            </button>
 
-// Search
-document.getElementById('searchInput').addEventListener('keyup', function(){
-  const val = this.value.toLowerCase();
-  document.querySelectorAll('.faq-item').forEach(item => {
-    const text = item.innerText.toLowerCase();
-    item.classList.toggle('hide', !text.includes(val));
-  });
-});
-</script>
+            <button class="category-btn" data-category="account">
+                Accounts
+            </button>
 
-</body>
-</html><nav>
-  <div class="logo-area" id="logoTrick">
-    <h2>NDMA ICT Helpdesk</h2>
-  </div>
-  <ul>
-    <li><a href="home.html" target="_self">Home</a></li>
-    <li><a href="about.html" target="_self">About</a></li>
-    <li><a href="contact.html" target="_self">Contact</a></li>
-    <li><a href="faq.html" target="_self" class="active">FAQ</a></li>
-    <li><a href="admin.html" id="adminLink" style="display:none;" target="_self">Admin</a></li>
-  </ul>
-</nav>
-</nav>
+            <button class="category-btn" data-category="computer">
+                Computers
+            </button>
 
-<script>
-// ADMIN TRICK - click logo 3 times
-let c=0;
-document.getElementById('logoTrick').addEventListener('click', ()=>{
- 
-  if(c>=3){
-    document.getElementById('adminLink').style.display='list-item';
-    alert('Admin unlocked!');
-    c=0;
-  }
-  setTimeout(()=>c=0,2000);
-});
-</script>
+            <button class="category-btn" data-category="network">
+                Network
+            </button>
+
+            <button class="category-btn" data-category="email">
+                Email
+            </button>
+
+            <button class="category-btn" data-category="tickets">
+                Helpdesk Tickets
+            </button>
+        </div>
+
+        <!-- QUESTIONS -->
+        <div class="faq-list" id="faqList">
+
+            <!-- ACCOUNT QUESTIONS -->
+            <div class="faq-item" data-category="account">
+                <button class="faq-question" aria-expanded="false">
+                    <span>1. What should I do if I forget my password?</span>
+                    <span class="plus">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    Follow your organisation's approved password recovery
+                    process or contact the authorised ICT support team.
+                    Never share your password with anyone.
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="account">
+                <button class="faq-question" aria-expanded="false">
+                    <span>2. My account is locked. What should I do?</span>
+                    <span class="plus">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    Wait if your organisation's security policy requires it,
+                    then contact authorised ICT support for assistance.
+                    Do not repeatedly guess your password.
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="account">
+                <button class="faq-question" aria-expanded="false">
+                    <span>3. How can I keep my account secure?</span>
+                    <span class="plus">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    Use a strong, unique password, enable multi-factor
+                    authentication if available, lock your computer when
+                    away, and never share login credentials.
+                </div>
+            </div>
+
+            <!-- COMPUTER QUESTIONS -->
+            <div class="faq-item" data-category="computer">
+                <button class="faq-question" aria-expanded="false">
+                    <span>4. What should I do if my computer is slow?</span>
+                    <span class="plus">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    Save your work, close applications you are not using,
+                    and restart your computer if appropriate. If the problem
+                    continues, contact ICT support and describe the symptoms.
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="computer">
+                <button class="faq-question" aria-expanded="false">
+                    <span>5. My computer will not turn on. What can I check?</span>
+                    <span class="plus">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    Check that the power cable is securely connected and
+                    the power outlet works. For a laptop, check the charger.
+                    If it still does not turn on, request technical support.
+                    Do not open the equipment yourself unless authorised.
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="computer">
+                <button class="faq-question" aria-expanded="false">
+                    <span>6. What should I do if my printer is not working?</span>
+                    <span class="plus">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    Check the printer's power, paper, ink or toner, and
+                    connection. Confirm that the correct printer is selected.
+                    If the issue remains, contact ICT support with the error
+                    message or printer details.
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="computer">
+                <button class="faq-question" aria-expanded="false">
+                    <span>7. Can I install software on my work computer?</span>
+                    <span class="plus">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    Follow your organisation's software installation and
+                    approval policy. Ask authorised ICT support to install
+                    or approve software when necessary. Avoid untrusted
+                    downloads.
+                </div>
+            </div>
+
+            <!-- NETWORK QUESTIONS -->
+            <div class="faq-item" data-category="network">
+                <button class="faq-question" aria-expanded="false">
+                    <span>8. What should I do if the internet is not working?</span>
+                    <span class="plus">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    Check whether your device is connected to the correct
+                    network. Try opening another website and check whether
+                    other authorised devices have the same issue. If the
+                    connection is still unavailable, report it to ICT support.
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="network">
+                <button class="faq-question" aria-expanded="false">
+                    <span>9. Why can I not connect to the office Wi-Fi?</span>
+                    <span class="plus">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    Confirm that Wi-Fi is enabled and that you are selecting
+                    the correct authorised network. Check with ICT support
+                    if your account needs access or the connection keeps
+                    failing. Do not share Wi-Fi passwords publicly.
+                </div>
+            </div>
+
+            <!-- EMAIL QUESTIONS -->
+            <div class="faq-item" data-category="email">
+                <button class="faq-question" aria-expanded="false">
+                    <span>10. What should I do if I cannot send an email?</span>
+                    <span class="plus">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    Check your internet connection, recipient address,
+                    attachment size, and whether your mailbox is full.
+                    If the problem continues, report the error message
+                    to authorised ICT support.
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="email">
+                <button class="faq-question" aria-expanded="false">
+                    <span>11. How can I recognise a suspicious email?</span>
+                    <span class="plus">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    Be careful with unexpected attachments, urgent payment
+                    requests, unfamiliar links, and messages asking for
+                    passwords. Do not click suspicious links or reply with
+                    confidential information. Report suspicious messages
+                    through your organisation's approved security process.
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="email">
+                <button class="faq-question" aria-expanded="false">
+                    <span>12. What if I cannot access my work email?</span>
+                    <span class="plus">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    Check your internet connection and sign-in details.
+                    If access still fails, contact authorised ICT support.
+                    Never send your password by email or message.
+                </div>
+            </div>
+
+            <!-- HELPDESK TICKET QUESTIONS -->
+            <div class="faq-item" data-category="tickets">
+                <button class="faq-question" aria-expanded="false">
+                    <span>13. What is an ICT support ticket?</span>
+                    <span class="plus">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    An ICT support ticket is a record of a technical problem
+                    or service request. It helps the support team document
+                    the issue, track progress, and record the resolution.
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="tickets">
+                <button class="faq-question" aria-expanded="false">
+                    <span>14. How do I report an ICT problem?</span>
+                    <span class="plus">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    Use your organisation's approved helpdesk process or
+                    contact the authorised ICT support team. Include a clear
+                    description, the affected device or service, and any
+                    error message. Do not include passwords.
+                    <br><br>
+                    <a href="ticket.html">Visit the Tickets page →</a>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="tickets">
+                <button class="faq-question" aria-expanded="false">
+                    <span>15. How can I follow up on my support request?</span>
+                    <span class="plus">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    Keep your ticket reference number if one is provided.
+                    Use the approved helpdesk tracking process or contact
+                    ICT support and provide the reference number.
+                    Ticket tracking must be connected to a working system
+                    for real-time updates.
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="tickets">
+                <button class="faq-question" aria-expanded="false">
+                    <span>16. How quickly will my issue be resolved?</span>
+                    <span class="plus">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    Resolution time depends on the type, urgency, and
+                    complexity of the problem, as well as the availability
+                    of support resources. Provide accurate information so
+                    the team can assess the issue.
+                </div>
+            </div>
+
+        </div>
+
+        <!-- NO RESULTS MESSAGE -->
+        <div class="no-results" id="noResults">
+            <h3>No matching questions found.</h3>
+            <p>Try another search word or select a different category.</p>
+        </div>
+
+        <!-- CONTACT SUPPORT -->
+        <section class="support-section">
+            <div class="support-icon">💬</div>
+
+            <h2>Still Need Help?</h2>
+
+            <p>
+                If you cannot find the answer you need, contact the
+                support contact listed below or visit the Contact page.
+            </p>
+
+            <div class="support-buttons">
+                <a href="contact.html" class="btn btn-primary">
+                    Contact Support
+                </a>
+
+                <a href="mailto:hanihassanyare@gmalim.com"
+                   class="btn btn-secondary">
+                    Email Us
+                </a>
+
+                <a href="tel:0725467098" class="btn btn-secondary">
+                    Call Us
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            &copy; <span id="year"></span> NDMA ICT Support Helpdesk.
+        </p>
+
+        <p>
+            Designed &amp; Built by <strong>Hani Hassan Yare</strong>
+        </p>
+
+        <p>Reliable ICT Support. Better Service.</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Automatically update the year
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        const searchInput = document.getElementById("faqSearch");
+        const faqItems = document.querySelectorAll(".faq-item");
+        const categoryButtons = document.querySelectorAll(".category-btn");
+        const noResults = document.getElementById("noResults");
+
+        let selectedCategory = "all";
+
+        // Open and close FAQ answers
+        document.querySelectorAll(".faq-question").forEach(function(button) {
+            button.addEventListener("click", function() {
+                const item = button.closest(".faq-item");
+                const isOpen = item.classList.contains("open");
+
+                item.classList.toggle("open", !isOpen);
+                button.setAttribute("aria-expanded", String(!isOpen));
+            });
+        });
+
+        // Search and category filtering
+        function filterFAQs() {
+            const searchText = searchInput.value.toLowerCase().trim();
+            let visibleCount = 0;
+
+            faqItems.forEach(function(item) {
+                const category = item.dataset.category;
+                const text = item.textContent.toLowerCase();
+
+                const matchesCategory =
+                    selectedCategory === "all" ||
+                    category === selectedCategory;
+
+                const matchesSearch = text.includes(searchText);
+
+                const shouldShow = matchesCategory && matchesSearch;
+
+                item.style.display = shouldShow ? "block" : "none";
+
+                if (shouldShow) {
+                    visibleCount++;
+                } else {
+                    item.classList.remove("open");
+                    item.querySelector(".faq-question")
+                        .setAttribute("aria-expanded", "false");
+                }
+            });
+
+            noResults.style.display =
+                visibleCount === 0 ? "block" : "none";
+        }
+
+        // Category button events
+        categoryButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                categoryButtons.forEach(function(btn) {
+                    btn.classList.remove("active");
+                });
+
+                button.classList.add("active");
+                selectedCategory = button.dataset.category;
+
+                filterFAQs();
+            });
+        });
+
+        // Search as the user types
+        searchInput.addEventListener("input", filterFAQs);
+    </script>
+
 </body>
 </html>
