@@ -2,714 +2,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NDMA Helpdesk | Home</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: #f5f8f5;
-            color: #26352c;
-            line-height: 1.6;
-        }
-
-        /* HEADER */
-        header {
-            background: #ffffff;
-            padding: 14px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo {
-            width: 62px;
-            height: 62px;
-            background: #087b40;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 3px solid #e1b84a;
-            flex-shrink: 0;
-        }
-
-        .logo svg {
-            width: 43px;
-            height: 43px;
-        }
-
-        .brand h2 {
-            color: #087b40;
-            font-size: 23px;
-            line-height: 1.2;
-        }
-
-        .brand p {
-            color: #666;
-            font-size: 12px;
-            letter-spacing: 1px;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #26352c;
-            font-size: 14px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        nav a:hover,
-        nav a.active {
-            color: #078343;
-        }
-
-        nav .nav-button {
-            background: #087b40;
-            color: white;
-            padding: 11px 18px;
-            border-radius: 6px;
-        }
-
-        nav .nav-button:hover {
-            background: #055d30;
-            color: white;
-        }
-
-        /* HERO */
-        .hero {
-            min-height: 560px;
-            padding: 80px 7%;
-            display: flex;
-            align-items: center;
-            background:
-                linear-gradient(110deg,
-                rgba(3, 73, 37, 0.96),
-                rgba(7, 123, 64, 0.88));
-            color: white;
-        }
-
-        .hero-content {
-            max-width: 760px;
-        }
-
-        .tag {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.14);
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            padding: 8px 15px;
-            border-radius: 30px;
-            font-size: 13px;
-            margin-bottom: 24px;
-        }
-
-        .hero h1 {
-            font-size: clamp(36px, 5vw, 58px);
-            line-height: 1.15;
-            margin-bottom: 22px;
-        }
-
-        .hero h1 span {
-            color: #f5d56d;
-        }
-
-        .hero p {
-            max-width: 650px;
-            font-size: 17px;
-            color: #e9f4ec;
-            margin-bottom: 30px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 23px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .btn-yellow {
-            background: #f2cd58;
-            color: #193321;
-        }
-
-        .btn-yellow:hover {
-            background: #ffdf79;
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            color: white;
-            border: 1px solid white;
-        }
-
-        .btn-outline:hover {
-            background: white;
-            color: #087b40;
-        }
-
-        /* QUICK SERVICES */
-        .services {
-            max-width: 1150px;
-            margin: -45px auto 0;
-            padding: 0 20px;
-            position: relative;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .service-card {
-            background: white;
-            padding: 28px 22px;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            text-align: center;
-            border-bottom: 4px solid #087b40;
-        }
-
-        .service-icon {
-            font-size: 35px;
-            margin-bottom: 10px;
-        }
-
-        .service-card h3 {
-            color: #087b40;
-            margin-bottom: 9px;
-        }
-
-        .service-card p {
-            color: #657067;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .service-card a {
-            color: #087b40;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .service-card a:hover {
-            text-decoration: underline;
-        }
-
-        /* ABOUT */
-        .about {
-            max-width: 1100px;
-            margin: auto;
-            padding: 85px 25px;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .section-label {
-            color: #087b40;
-            text-transform: uppercase;
-            font-weight: bold;
-            font-size: 13px;
-            letter-spacing: 2px;
-        }
-
-        .about h2,
-        .section-heading h2 {
-            font-size: 34px;
-            line-height: 1.25;
-            margin: 12px 0 20px;
-            color: #20392a;
-        }
-
-        .about p {
-            color: #637067;
-            margin-bottom: 18px;
-        }
-
-        .about-box {
-            background: #e5f2e8;
-            padding: 35px;
-            border-radius: 14px;
-            border-left: 6px solid #087b40;
-        }
-
-        .about-box h3 {
-            color: #087b40;
-            margin-bottom: 14px;
-        }
-
-        .about-box ul {
-            padding-left: 20px;
-        }
-
-        .about-box li {
-            margin: 12px 0;
-        }
-
-        /* FAQ PREVIEW */
-        .faq-section {
-            background: #ffffff;
-            padding: 75px 20px;
-        }
-
-        .section-heading {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 35px;
-        }
-
-        .section-heading p {
-            color: #657067;
-        }
-
-        .faq-list {
-            max-width: 800px;
-            margin: auto;
-        }
-
-        details {
-            background: #f5f8f5;
-            border: 1px solid #e0e9e1;
-            border-radius: 8px;
-            margin-bottom: 12px;
-            padding: 18px 20px;
-        }
-
-        summary {
-            cursor: pointer;
-            font-weight: bold;
-            color: #28543a;
-        }
-
-        details p {
-            margin-top: 12px;
-            color: #657067;
-        }
-
-        .faq-link {
-            text-align: center;
-            margin-top: 28px;
-        }
-
-        /* CONTACT BANNER */
-        .contact-banner {
-            background: #e5f2e8;
-            padding: 55px 20px;
-            text-align: center;
-        }
-
-        .contact-banner h2 {
-            color: #087b40;
-            font-size: 30px;
-            margin-bottom: 12px;
-        }
-
-        .contact-banner p {
-            color: #56675b;
-            margin-bottom: 24px;
-        }
-
-        /* FOOTER */
-        footer {
-            background: #123522;
-            color: white;
-            padding: 38px 6% 20px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 35px;
-            margin-bottom: 30px;
-        }
-
-        footer h3 {
-            color: #f2cd58;
-            margin-bottom: 13px;
-        }
-
-        footer p,
-        footer a {
-            color: #d5e2d8;
-            font-size: 14px;
-        }
-
-        footer a {
-            text-decoration: none;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        footer a:hover {
-            color: #f2cd58;
-        }
-
-        .copyright {
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-top: 18px;
-            text-align: center;
-            font-size: 13px;
-            color: #c5d4c9;
-        }
-
-        /* MOBILE */
-        @media (max-width: 850px) {
-            header {
-                justify-content: center;
-            }
-
-            nav {
-                justify-content: center;
-                gap: 13px;
-            }
-
-            .services {
-                grid-template-columns: 1fr;
-                margin-top: 25px;
-            }
-
-            .about {
-                grid-template-columns: 1fr;
-                gap: 28px;
-                padding-top: 55px;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 22px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .brand h2 {
-                font-size: 19px;
-            }
-
-            .logo {
-                width: 52px;
-                height: 52px;
-            }
-
-            nav a {
-                font-size: 12px;
-            }
-
-            .hero {
-                min-height: 480px;
-                padding: 55px 23px;
-            }
-
-            .hero p {
-                font-size: 15px;
-            }
-
-            .about h2,
-            .section-heading h2 {
-                font-size: 28px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NDMA ICT Support | Admin</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f7f3;
+      color: #19352a;
+    }
+    header {
+      background: #064e32;
+      color: white;
+      padding: 22px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    header h2 { margin: 0; }
+    header a { color: white; text-decoration: none; }
+    main {
+      max-width: 900px;
+      margin: 45px auto;
+      padding: 20px;
+    }
+    .panel {
+      background: white;
+      border-radius: 14px;
+      padding: 30px;
+      box-shadow: 0 8px 30px #153c2415;
+      margin-bottom: 22px;
+    }
+    input, button {
+      width: 100%;
+      padding: 13px;
+      margin-top: 12px;
+      border-radius: 7px;
+      font-size: 16px;
+    }
+    input { border: 1px solid #cbd8ce; }
+    button {
+      background: #087443;
+      color: white;
+      border: 0;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover { background: #064e32; }
+    .hidden { display: none; }
+    .notice { color: #a22b2b; }
+    .stat {
+      background: #e5f3e9;
+      padding: 18px;
+      border-radius: 9px;
+      margin-top: 15px;
+    }
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #064e32;
+      color: white;
+    }
+  </style>
 </head>
-
 <body>
+  <header>
+    <h2>NDMA ICT Support</h2>
+    <a href="index.html">← Back to Home</a>
+  </header>
 
-    <!-- HEADER AND LOGO -->
-    <header>
-        <a href="index.html"
-           class="brand"
-           style="text-decoration:none">
+  <main>
+    <section class="panel" id="loginPanel">
+      <h1>Administrator Login</h1>
+      <p>Sign in to access the ICT Support dashboard.</p>
 
-            <!-- Built-in logo: works without an image file -->
-            <div class="logo" role="img" aria-label="Helpdesk logo">
-                <svg viewBox="0 0 100 100"
-                     xmlns="http://www.w3.org/2000/svg"
-                     aria-hidden="true">
-                    <path d="M50 10 L80 22 L76 58
-                             Q68 78 50 89
-                             Q32 78 24 58 L20 22 Z"
-                          fill="#ffffff"/>
-                    <path d="M50 20 L70 28 L67 56
-                             Q61 70 50 78
-                             Q39 70 33 56 L30 28 Z"
-                          fill="#087b40"/>
-                    <path d="M37 49 L46 58 L64 39"
-                          fill="none"
-                          stroke="#f2cd58"
-                          stroke-width="7"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"/>
-                </svg>
-            </div>
+      <form id="loginForm">
+        <label for="username">Username</label>
+        <input id="username" required autocomplete="username">
 
-            <div>
-                <h2>NDMA Helpdesk</h2>
-                <p>SUPPORT &amp; SERVICE PORTAL</p>
-            </div>
-        </a>
+        <label for="password">Password</label>
+        <input id="password" type="password" required
+               autocomplete="current-password">
 
-        <nav>
-            <a href="index.html" class="active">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="ticket.html">Tickets</a>
-            <a href="faq.html">FAQ</a>
-            <a href="contact.html">Contact</a>
-            <a href="admin.html" class="nav-button">Admin</a>
-        </nav>
-    </header>
-
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-content">
-            <span class="tag">WELCOME TO THE HELP DESK</span>
-
-            <h1>
-                We're Here to Help
-                <span>You.</span>
-            </h1>
-
-            <p>
-                Welcome to the NDMA Helpdesk. Find answers to your
-                questions, submit a support ticket, and contact our
-                team when you need assistance. We are committed to
-                making it easier for you to get the support you need.
-            </p>
-
-            <div class="hero-buttons">
-                <a href="ticket.html" class="btn btn-yellow">
-                    Submit a Ticket →
-                </a>
-
-                <a href="faq.html" class="btn btn-outline">
-                    Explore FAQs
-                </a>
-            </div>
-        </div>
+        <button type="submit">Sign In</button>
+        <p class="notice" id="loginMessage" role="alert"></p>
+      </form>
     </section>
 
-    <!-- QUICK SERVICES -->
-    <section class="services">
+    <section class="panel hidden" id="dashboard">
+      <h1>Welcome, Administrator!</h1>
+      <p>NDMA ICT Support Dashboard</p>
 
-        <div class="service-card">
-            <div class="service-icon">🎫</div>
-            <h3>Submit a Ticket</h3>
-            <p>
-                Tell us about your issue and submit a request
-                for assistance.
-            </p>
-            <a href="ticket.html">Create a ticket →</a>
-        </div>
+      <div class="stat">
+        <h3>Contact Messages</h3>
+        <p>Check the email account configured for your contact form.</p>
+      </div>
 
-        <div class="service-card">
-            <div class="service-icon">💬</div>
-            <h3>Frequently Asked Questions</h3>
-            <p>
-                Find answers to common questions without
-                waiting for support.
-            </p>
-            <a href="faq.html">Find answers →</a>
-        </div>
+      <div class="stat">
+        <h3>ICT Support Tickets</h3>
+        <p>Check the email account configured for your ticket form.</p>
+      </div>
 
-        <div class="service-card">
-            <div class="service-icon">📩</div>
-            <h3>Contact Support</h3>
-            <p>
-                Have a question? Reach out to us for further
-                information and assistance.
-            </p>
-            <a href="contact.html">Contact us →</a>
-        </div>
-
+      <button id="logoutButton">Log Out</button>
     </section>
+  </main>
 
-    <!-- ABOUT SECTION -->
-    <section class="about" id="about">
+  <footer>Built by Hani Hassan Yare</footer>
 
-        <div>
-            <span class="section-label">ABOUT OUR HELP DESK</span>
+  <script>
+    // DEMO ONLY: browser-side passwords are not secure.
+    const DEMO_USERNAME = "admin";
+    const DEMO_PASSWORD = "NDMA@2026";
 
-            <h2>Making Support Simple and Accessible</h2>
+    const loginPanel = document.getElementById("loginPanel");
+    const dashboard = document.getElementById("dashboard");
+    const loginMessage = document.getElementById("loginMessage");
 
-            <p>
-                The NDMA Helpdesk website is designed to provide
-                a convenient place for users to find information
-                and request assistance.
-            </p>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
 
-            <p>
-                Users can explore frequently asked questions,
-                submit support tickets, and communicate with
-                the support team through the available pages.
-            </p>
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
 
-            <a href="about.html" class="btn"
-               style="background:#087b40;color:white">
-                Learn More About Us →
-            </a>
-        </div>
+      if (username === DEMO_USERNAME && password === DEMO_PASSWORD) {
+        loginPanel.classList.add("hidden");
+        dashboard.classList.remove("hidden");
+        loginMessage.textContent = "";
+      } else {
+        loginMessage.textContent = "Incorrect username or password.";
+      }
+    });
 
-        <div class="about-box">
-            <h3>How We Can Help</h3>
-
-            <ul>
-                <li>Submit support requests online.</li>
-                <li>Find answers to common questions.</li>
-                <li>Contact the support team.</li>
-                <li>Access helpdesk information in one place.</li>
-            </ul>
-        </div>
-
-    </section>
-
-    <!-- FAQ SECTION -->
-    <section class="faq-section">
-
-        <div class="section-heading">
-            <span class="section-label">NEED HELP?</span>
-            <h2>Frequently Asked Questions</h2>
-            <p>
-                Here are a few common questions to help you
-                get started with our helpdesk.
-            </p>
-        </div>
-
-        <div class="faq-list">
-
-            <details>
-                <summary>What is the NDMA Helpdesk?</summary>
-                <p>
-                    It is a website designed to help users access
-                    helpdesk information, submit support requests,
-                    and find answers to common questions.
-                </p>
-            </details>
-
-            <details>
-                <summary>How do I submit a support ticket?</summary>
-                <p>
-                    Open the Tickets page, complete the available
-                    form with details about your issue, and submit it.
-                </p>
-            </details>
-
-            <details>
-                <summary>Where can I find answers to my questions?</summary>
-                <p>
-                    Visit the FAQ page to explore frequently
-                    asked questions and their answers.
-                </p>
-            </details>
-
-            <details>
-                <summary>How can I contact the support team?</summary>
-                <p>
-                    Visit the Contact page to find the available
-                    contact details and send a message.
-                </p>
-            </details>
-
-        </div>
-
-        <div class="faq-link">
-            <a href="faq.html" class="btn"
-               style="background:#087b40;color:white">
-                View All FAQs →
-            </a>
-        </div>
-
-    </section>
-
-    <!-- CONTACT BANNER -->
-    <section class="contact-banner">
-        <h2>Still Need Assistance?</h2>
-        <p>
-            We welcome your questions. Visit our contact page
-            to get in touch with the helpdesk team.
-        </p>
-
-        <a href="contact.html" class="btn"
-           style="background:#087b40;color:white">
-            Contact Us Today →
-        </a>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-content">
-
-            <div>
-                <h3>NDMA Helpdesk</h3>
-                <p>
-                    A convenient support portal for accessing
-                    helpdesk information, submitting requests,
-                    and finding answers to common questions.
-                </p>
-            </div>
-
-            <div>
-                <h3>Quick Links</h3>
-                <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="ticket.html">Submit a Ticket</a>
-                <a href="faq.html">FAQs</a>
-            </div>
-
-            <div>
-                <h3>Get Support</h3>
-                <a href="contact.html">Contact Us</a>
-                <a href="ticket.html">Create a Ticket</a>
-                <a href="admin.html">Admin Portal</a>
-            </div>
-
-        </div>
-
-        <div class="copyright">
-            &copy; <span id="year"></span> NDMA Helpdesk.
-            All rights reserved.
-        </div>
-    </footer>
-
-    <script>
-        document.getElementById("year").textContent =
-            new Date().getFullYear();
-    </script>
-
+    document.getElementById("logoutButton").addEventListener("click", function() {
+      dashboard.classList.add("hidden");
+      loginPanel.classList.remove("hidden");
+      document.getElementById("loginForm").reset();
+    });
+  </script>
 </body>
 </html>
-```

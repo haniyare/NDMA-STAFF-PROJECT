@@ -4,573 +4,211 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Contact Us | NDMA Helpdesk</title>
-
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
+  <title>Contact Us | NDMA ICT Support</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
+    * { box-sizing: border-box; }
     body {
-      background: #f5f8f5;
-      color: #183b29;
-      line-height: 1.6;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f7f4;
+      color: #24352b;
     }
-
-    /* HEADER */
-    header {
-      background: #063d25;
-      color: white;
-      padding: 18px 7%;
+    nav {
+      background: #064e32;
+      padding: 20px 7%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-    }
-
-    .logo {
-      font-size: 23px;
-      font-weight: bold;
-    }
-
-    .logo span {
-      color: #9de0b1;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    nav a {
       color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
     }
-
-    nav a:hover {
-      color: #9de0b1;
-    }
-
-    /* HERO */
+    nav h2 { margin: 0; }
+    nav a { color: white; text-decoration: none; margin: 5px 8px; }
     .hero {
-      background: linear-gradient(135deg, #042d1b, #087443);
+      background: #08613d;
       color: white;
+      padding: 55px 20px;
       text-align: center;
-      padding: 75px 20px;
     }
-
-    .hero h1 {
-      font-size: 42px;
-      margin-bottom: 12px;
-    }
-
-    .hero p {
-      max-width: 650px;
-      margin: auto;
-      color: #e4f4e9;
-      font-size: 17px;
-    }
-
-    .hero-line {
-      width: 75px;
-      height: 4px;
-      background: #9de0b1;
-      margin: 20px auto 0;
-      border-radius: 5px;
-    }
-
-    /* MAIN CONTENT */
+    .hero h1 { font-size: 38px; margin-bottom: 10px; }
     .container {
-      max-width: 1100px;
-      margin: 50px auto;
-      padding: 0 20px;
+      max-width: 1050px;
+      margin: 35px auto;
+      padding: 20px;
       display: grid;
-      grid-template-columns: 0.9fr 1.3fr;
-      gap: 30px;
-      align-items: start;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 25px;
     }
-
-    .contact-info,
-    .contact-form {
+    .card {
       background: white;
-      padding: 32px;
       border-radius: 14px;
-      border: 1px solid #e0ebe2;
-      box-shadow: 0 8px 25px rgba(6,61,37,0.08);
+      padding: 28px;
+      box-shadow: 0 8px 25px #183e2412;
     }
-
-    h2 {
-      color: #064d2d;
-      margin-bottom: 12px;
-      font-size: 25px;
-    }
-
-    .intro {
-      color: #647568;
-      margin-bottom: 25px;
-    }
-
-    /* CONTACT DETAILS */
-    .info-item {
-      display: flex;
-      gap: 14px;
-      margin: 25px 0;
-      align-items: flex-start;
-    }
-
-    .info-icon {
-      width: 46px;
-      height: 46px;
-      flex-shrink: 0;
-      border-radius: 10px;
-      background: #e5f3e9;
-      color: #064d2d;
-      display: grid;
-      place-items: center;
-      font-size: 21px;
-    }
-
-    .info-item h3 {
-      color: #183b29;
-      font-size: 16px;
-      margin-bottom: 4px;
-    }
-
-    .info-item p {
-      color: #647568;
-      overflow-wrap: anywhere;
-    }
-
-    .info-item a {
-      color: #087443;
-      text-decoration: none;
-      overflow-wrap: anywhere;
-    }
-
-    .info-item a:hover {
-      color: #063d25;
-      text-decoration: underline;
-    }
-
-    /* FORM */
-    .field {
-      margin-bottom: 19px;
-    }
-
-    .contact-form label {
-      display: block;
-      font-weight: bold;
-      color: #183b29;
-      margin-bottom: 7px;
-    }
-
-    .contact-form input,
-    .contact-form select,
-    .contact-form textarea {
+    .contact-item { margin: 24px 0; line-height: 1.7; }
+    .contact-item a { color: #087443; overflow-wrap: anywhere; }
+    label { display: block; margin-top: 15px; font-weight: bold; }
+    input, textarea, select {
       width: 100%;
+      padding: 13px;
+      margin-top: 7px;
+      border: 1px solid #cbd8ce;
+      border-radius: 7px;
+      font: inherit;
+    }
+    textarea { min-height: 130px; resize: vertical; }
+    button {
+      width: 100%;
+      margin-top: 20px;
       padding: 14px;
-      border: 1px solid #cbd9ce;
-      border-radius: 8px;
-      font-size: 15px;
-      outline: none;
-      background: white;
-      color: #183b29;
-      transition: 0.3s;
-    }
-
-    .contact-form input:focus,
-    .contact-form select:focus,
-    .contact-form textarea:focus {
-      border-color: #087443;
-      box-shadow: 0 0 0 3px rgba(8,116,67,0.12);
-    }
-
-    .contact-form textarea {
-      min-height: 145px;
-      resize: vertical;
-    }
-
-    /* SEND BUTTON */
-    .submit-btn {
-      width: 100%;
-      padding: 15px;
       border: none;
-      border-radius: 8px;
-      background: #064d2d;
+      border-radius: 7px;
+      background: #087443;
       color: white;
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      transition: 0.3s;
     }
-
-    .submit-btn:hover {
-      background: #087443;
-      transform: translateY(-2px);
-    }
-
-    .submit-btn:disabled {
-      background: #648b72;
-      cursor: wait;
-      transform: none;
-    }
-
-    /* MESSAGE STATUS */
-    #form-status {
-      margin-top: 15px;
-      padding: 12px;
-      border-radius: 7px;
-      display: none;
-      overflow-wrap: anywhere;
-    }
-
-    #form-status.success {
-      display: block;
-      background: #e4f5e8;
-      color: #064d2d;
-      border: 1px solid #a9d8b5;
-    }
-
-    #form-status.error {
-      display: block;
-      background: #fff0f0;
-      color: #a11c1c;
-      border: 1px solid #f1c4c4;
-    }
-
-    .note {
-      font-size: 12px;
-      color: #647568;
-      margin-top: 12px;
-    }
-
-    /* FOOTER */
+    button:hover { background: #064e32; }
+    #formStatus { line-height: 1.6; overflow-wrap: anywhere; }
     footer {
-      background: #042d1b;
+      background: #043c27;
       color: white;
       text-align: center;
-      padding: 30px 15px;
-      margin-top: 50px;
+      padding: 24px;
     }
-
-    footer p {
-      margin: 6px 0;
-    }
-
-    footer a {
-      color: #b9e9c7;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      color: white;
-      text-decoration: underline;
-    }
-
-    /* MOBILE */
-    @media (max-width: 750px) {
-      header {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      nav {
-        justify-content: center;
-        gap: 12px;
-      }
-
-      .hero {
-        padding: 55px 20px;
-      }
-
-      .hero h1 {
-        font-size: 32px;
-      }
-
-      .container {
-        grid-template-columns: 1fr;
-        margin-top: 25px;
-      }
-
-      .contact-info,
-      .contact-form {
-        padding: 23px;
-      }
+    @media(max-width: 720px) {
+      .container { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 30px; }
     }
   </style>
 </head>
-
 <body>
-
-  <!-- NAVIGATION -->
-  <header>
-    <div class="logo">NDMA <span>Helpdesk</span></div>
-
-    <nav>
+  <nav>
+    <h2>NDMA ICT Support</h2>
+    <div>
       <a href="index.html">Home</a>
       <a href="about.html">About Us</a>
-      <a href="ticket.html">Submit Ticket</a>
-      <a href="faq.html">FAQ</a>
       <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+      <a href="ticket.html">Submit Ticket</a>
+    </div>
+  </nav>
 
-  <!-- HERO SECTION -->
   <section class="hero">
     <h1>Contact Us</h1>
-    <p>
-      Have a question or need assistance? Send us a message.
-      Our helpdesk is here to help you.
-    </p>
-    <div class="hero-line"></div>
+    <p>We're here to help with your ICT support needs.</p>
   </section>
 
-  <!-- CONTACT CONTENT -->
   <main class="container">
-
-    <!-- CONTACT INFORMATION -->
-    <section class="contact-info">
+    <section class="card">
       <h2>Get in Touch</h2>
+      <p>Contact our ICT Support team for assistance.</p>
 
-      <p class="intro">
-        You can reach us using the contact details below
-        or send a message through our form.
-      </p>
-
-      <div class="info-item">
-        <div class="info-icon">📞</div>
-        <div>
-          <h3>Phone Number</h3>
-          <a href="tel:0725467098">0725467098</a>
-        </div>
+      <div class="contact-item">
+        <strong>✉ Email</strong><br>
+        <a href="mailto:hanihassanyare@gmali.com">
+          hanihassanyare@gmali.com
+        </a>
       </div>
 
-      <div class="info-item">
-        <div class="info-icon">✉️</div>
-        <div>
-          <h3>Email Address</h3>
-          <p>Update this with your complete email address.</p>
-        </div>
+      <div class="contact-item">
+        <strong>☎ Phone</strong><br>
+        <a href="tel:0725467098">0725467098</a>
       </div>
 
-      <div class="info-item">
-        <div class="info-icon">🎫</div>
-        <div>
-          <h3>Helpdesk Tickets</h3>
-          <p>
-            Have a problem? Submit a ticket so your issue
-            can be recorded for follow-up.
-          </p>
-          <a href="ticket.html">Submit a ticket →</a>
-        </div>
-      </div>
-
-      <div class="info-item">
-        <div class="info-icon">🔗</div>
-        <div>
-          <h3>LinkedIn Profile</h3>
-          <a
-            href="https://www.linkedin.com/in/hani-hassan-yare-03856a354"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Hani Hassan Yare
-          </a>
-        </div>
+      <div class="contact-item">
+        <strong>LinkedIn</strong><br>
+        <a href="https://www.linkedin.com/in/hani-hassan-yare-03856a354"
+           target="_blank" rel="noopener noreferrer">
+          View LinkedIn Profile
+        </a>
       </div>
     </section>
 
-    <!-- CONTACT FORM -->
-    <section class="contact-form">
+    <section class="card">
       <h2>Send Us a Message</h2>
-
-      <p class="intro">
-        Complete the form below and send your inquiry.
-      </p>
+      <p>Complete this form and we'll process your message.</p>
 
       <form id="contactForm">
+        <label for="name">Full Name</label>
+        <input id="name" name="from_name" required>
 
-        <div class="field">
-          <label for="name">Full Name</label>
-          <input
-            type="text"
-            id="name"
-            name="from_name"
-            placeholder="Enter your full name"
-            autocomplete="name"
-            required
-          >
-        </div>
+        <label for="email">Your Email</label>
+        <input id="email" name="reply_to" type="email" required>
 
-        <div class="field">
-          <label for="email">Your Email Address</label>
-          <input
-            type="email"
-            id="email"
-            name="from_email"
-            placeholder="Enter your email address"
-            autocomplete="email"
-            required
-          >
-        </div>
+        <label for="subject">Subject</label>
+        <select id="subject" name="subject" required>
+          <option value="">Choose a subject</option>
+          <option>Computer Problem</option>
+          <option>Network Problem</option>
+          <option>Software Installation</option>
+          <option>Account Access</option>
+          <option>Other ICT Issue</option>
+        </select>
 
-        <div class="field">
-          <label for="phone">Phone Number</label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            placeholder="Enter your phone number"
-            autocomplete="tel"
-            required
-          >
-        </div>
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message"
+                  placeholder="Write your message here..." required></textarea>
 
-        <div class="field">
-          <label for="subject">Subject</label>
-          <select id="subject" name="subject" required>
-            <option value="">Choose a subject</option>
-            <option value="General Inquiry">General Inquiry</option>
-            <option value="Technical Support">Technical Support</option>
-            <option value="Ticket Support">Ticket Support</option>
-            <option value="Complaint">Complaint</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label for="message">Your Message</label>
-          <textarea
-            id="message"
-            name="message"
-            placeholder="Write your message here..."
-            required
-          ></textarea>
-        </div>
-
-        <button type="submit" class="submit-btn" id="submitBtn">
-          Send Message
-        </button>
-
-        <div id="form-status" role="status" aria-live="polite"></div>
-
-        <p class="note">
-          Your message will be sent by email after EmailJS has
-          been configured. Do not include passwords or other
-          sensitive information.
-        </p>
+        <button type="submit" id="sendButton">Send Message</button>
+        <p id="formStatus" role="status" aria-live="polite"></p>
       </form>
     </section>
-
   </main>
 
-  <!-- FOOTER -->
-  <footer>
-    <p><strong>NDMA Helpdesk</strong></p>
-    <p>Providing support and helping users get assistance.</p>
-    <p>Phone: <a href="tel:0725467098">0725467098</a></p>
-    <p>
-      LinkedIn:
-      <a
-        href="https://www.linkedin.com/in/hani-hassan-yare-03856a354"
-        target="_blank"
-        rel="noopener noreferrer"
-      >Hani Hassan Yare</a>
-    </p>
-    <p>&copy; 2026 NDMA Helpdesk. All rights reserved.</p>
-  </footer>
+  <footer>© 2026 NDMA ICT Support | Built by Hani Hassan Yare</footer>
 
-  <!-- EMAIL FUNCTIONALITY -->
+  <!-- EmailJS library -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
     /*
-      EMAILJS SETUP:
-      1. Visit https://www.emailjs.com/
-      2. Connect your email account.
-      3. Create an email template.
-      4. Replace the three values below with your real IDs.
-      5. Set the recipient to your own complete email address.
+      Replace these three placeholders with the values from your
+      EmailJS account. Set the recipient email in your EmailJS template.
     */
-
     const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
     const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
-    const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+    const EMAILJS_TEMPLATE_ID = "YOUR_CONTACT_TEMPLATE_ID";
 
     const form = document.getElementById("contactForm");
-    const button = document.getElementById("submitBtn");
-    const status = document.getElementById("form-status");
-
-    const configured = [
-      EMAILJS_PUBLIC_KEY,
-      EMAILJS_SERVICE_ID,
-      EMAILJS_TEMPLATE_ID
-    ].every(value => value && !value.startsWith("YOUR_"));
-
-    if (configured && window.emailjs) {
-      emailjs.init({
-        publicKey: EMAILJS_PUBLIC_KEY
-      });
-    }
+    const status = document.getElementById("formStatus");
+    const button = document.getElementById("sendButton");
 
     form.addEventListener("submit", async function(event) {
       event.preventDefault();
 
-      status.className = "";
-      status.textContent = "";
-
-      if (!configured || !window.emailjs) {
-        status.className = "error";
+      if (EMAILJS_PUBLIC_KEY.startsWith("YOUR_") ||
+          EMAILJS_SERVICE_ID.startsWith("YOUR_") ||
+          EMAILJS_TEMPLATE_ID.startsWith("YOUR_")) {
         status.textContent =
-          "Email is not configured. Add your EmailJS public key, service ID and template ID first.";
+          "Email is not configured yet. Add your EmailJS keys in the code.";
         return;
       }
 
       button.disabled = true;
-      button.textContent = "Sending Message...";
-
-      const templateParams = {
-        from_name: document.getElementById("name").value.trim(),
-        from_email: document.getElementById("email").value.trim(),
-        phone: document.getElementById("phone").value.trim(),
-        subject: document.getElementById("subject").value,
-        message: document.getElementById("message").value.trim()
-      };
+      button.textContent = "Sending...";
+      status.textContent = "";
 
       try {
-        await emailjs.send(
+        emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+        await emailjs.sendForm(
           EMAILJS_SERVICE_ID,
           EMAILJS_TEMPLATE_ID,
-          templateParams
+          form
         );
 
-        status.className = "success";
-        status.textContent =
-          "Your message has been sent successfully. Thank you for contacting us!";
-
+        status.textContent = "Message sent successfully!";
         form.reset();
-
       } catch (error) {
-        console.error("EmailJS error:", error);
-
-        status.className = "error";
+        console.error(error);
         status.textContent =
-          "Message could not be sent. Check your internet connection, EmailJS IDs and template settings.";
+          "Message could not be sent. Check your EmailJS settings and internet connection.";
       } finally {
         button.disabled = false;
         button.textContent = "Send Message";
       }
     });
   </script>
-
 </body>
 </html>

@@ -4,358 +4,183 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Submit a Ticket | NDMA Helpdesk</title>
-
+  <title>Submit ICT Ticket | NDMA</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f4f8f4;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f7f3;
       color: #24352b;
-      line-height: 1.6;
     }
-
-    header {
-      background: #14532d;
-      color: white;
-      padding: 18px 7%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
-    .brand {
-      font-size: 22px;
-      font-weight: bold;
-    }
-
     nav {
+      background: #064e32;
+      color: white;
+      padding: 20px 7%;
       display: flex;
+      justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
-      gap: 18px;
+      gap: 12px;
     }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #bbf7d0;
-    }
-
+    nav h2 { margin: 0; }
+    nav a { color: white; text-decoration: none; margin: 5px; }
     .hero {
-      background: linear-gradient(135deg, #166534, #15803d);
-      color: white;
       text-align: center;
-      padding: 55px 20px;
+      color: white;
+      background: #08613d;
+      padding: 45px 20px;
     }
-
-    .hero h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      max-width: 650px;
-      margin: auto;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 850px;
-      margin: 40px auto;
-    }
-
-    .form-card {
+    .hero h1 { margin-top: 0; font-size: 35px; }
+    .ticket-card {
+      max-width: 720px;
+      margin: 35px auto;
+      padding: 30px;
       background: white;
-      padding: 35px;
-      border-radius: 15px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      border-radius: 14px;
+      box-shadow: 0 8px 25px #183e2412;
     }
-
-    .form-card h2 {
-      color: #166534;
-      margin-bottom: 8px;
-    }
-
-    .intro {
-      color: #66756a;
-      margin-bottom: 25px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 7px;
-    }
-
+    label { display: block; margin-top: 17px; font-weight: bold; }
     input, select, textarea {
       width: 100%;
       padding: 13px;
-      border: 1px solid #cbd5ce;
-      border-radius: 8px;
-      font-size: 15px;
-      font-family: inherit;
-      background: #fff;
+      margin-top: 7px;
+      border: 1px solid #cbd8ce;
+      border-radius: 7px;
+      font: inherit;
     }
-
-    input:focus, select:focus, textarea:focus {
-      outline: 2px solid #86efac;
-      border-color: #15803d;
-    }
-
-    textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .submit-btn {
+    textarea { min-height: 140px; resize: vertical; }
+    button {
       width: 100%;
-      padding: 15px;
-      border: none;
-      border-radius: 8px;
-      background: #15803d;
+      background: #087443;
       color: white;
-      font-size: 17px;
+      border: none;
+      border-radius: 7px;
+      padding: 14px;
+      font-size: 16px;
       font-weight: bold;
+      margin-top: 22px;
       cursor: pointer;
     }
-
-    .submit-btn:hover {
-      background: #14532d;
-    }
-
-    .submit-btn:disabled {
-      opacity: 0.65;
-      cursor: wait;
-    }
-
-    #status {
-      margin-top: 18px;
-      padding: 12px;
-      border-radius: 8px;
-      display: none;
-      overflow-wrap: anywhere;
-    }
-
-    .contact-card {
-      margin-top: 30px;
-      padding: 25px;
-      border-radius: 12px;
-      background: #e8f5e9;
-    }
-
-    .contact-card h3 {
-      color: #14532d;
-      margin-bottom: 12px;
-    }
-
-    .contact-card p {
-      margin: 10px 0;
-      overflow-wrap: anywhere;
-    }
-
-    .contact-card a {
-      color: #166534;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .contact-card a:hover {
-      text-decoration: underline;
-    }
-
+    button:hover { background: #064e32; }
+    #ticketStatus { line-height: 1.6; overflow-wrap: anywhere; }
     footer {
-      margin-top: 50px;
-      background: #102d1c;
-      color: white;
       text-align: center;
-      padding: 25px 15px;
+      padding: 24px;
+      background: #043c27;
+      color: white;
     }
-
-    footer a {
-      color: #bbf7d0;
-      text-decoration: none;
-      margin: 0 8px;
-    }
-
-    @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      nav {
-        justify-content: center;
-        gap: 12px;
-      }
-
-      .hero h1 {
-        font-size: 28px;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-        gap: 0;
-      }
-
-      .form-card {
-        padding: 22px;
-      }
+    @media(max-width: 760px) {
+      .ticket-card { margin: 20px 12px; padding: 22px; }
     }
   </style>
 </head>
-
 <body>
-
-  <header>
-    <div class="brand">NDMA Helpdesk</div>
-
-    <nav>
+  <nav>
+    <h2>NDMA ICT Support</h2>
+    <div>
       <a href="index.html">Home</a>
       <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
       <a href="ticket.html">Submit Ticket</a>
-      <a href="contact.html">Contact Us</a>
-      <a href="faq.html">FAQs</a>
-    </nav>
-  </header>
+    </div>
+  </nav>
 
   <section class="hero">
-    <h1>Submit a Support Ticket</h1>
-    <p>
-      Need assistance? Tell us about your issue.
-      Our helpdesk team will review your request.
-    </p>
+    <h1>ICT Support Ticket</h1>
+    <p>Report your technical problem so the support team can assist.</p>
   </section>
 
-  <main class="container">
-    <section class="form-card">
-      <h2>Ticket Submission Form</h2>
-      <p class="intro">
-        Complete the form below with accurate details.
-        Fields marked * are required.
-      </p>
+  <main class="ticket-card">
+    <h2>Submit a Support Request</h2>
+    <p>Please provide accurate details about the problem.</p>
 
-      <form id="ticketForm">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="name">Full Name *</label>
-            <input type="text" id="name" name="name"
-                   placeholder="Enter your full name" required>
-          </div>
+    <form id="ticketForm">
+      <label for="staffName">Staff Name</label>
+      <input id="staffName" name="from_name" required>
 
-          <div class="form-group">
-            <label for="email">Your Email *</label>
-            <input type="email" id="email" name="email"
-                   placeholder="Enter your email" required>
-          </div>
-        </div>
+      <label for="staffEmail">Email Address</label>
+      <input id="staffEmail" name="reply_to" type="email" required>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label for="phone">Phone Number *</label>
-            <input type="tel" id="phone" name="phone"
-                   placeholder="e.g. 0723456789" required>
-          </div>
+      <label for="department">Department / Office</label>
+      <input id="department" name="department" required>
 
-          <div class="form-group">
-            <label for="category">Issue Category *</label>
-            <select id="category" name="category" required>
-              <option value="">Select a category</option>
-              <option value="Technical Support">Technical Support</option>
-              <option value="Drought Information">Drought Information</option>
-              <option value="Relief Assistance">Relief Assistance</option>
-              <option value="Website Problem">Website Problem</option>
-              <option value="General Inquiry">General Inquiry</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-        </div>
+      <label for="issueType">Type of ICT Problem</label>
+      <select id="issueType" name="issue_type" required>
+        <option value="">Select a problem</option>
+        <option>Computer or Laptop</option>
+        <option>Internet or Network</option>
+        <option>Printer</option>
+        <option>Email or Account Access</option>
+        <option>Software Installation</option>
+        <option>Other</option>
+      </select>
 
-        <div class="form-group">
-          <label for="subject">Ticket Subject *</label>
-          <input type="text" id="subject" name="subject"
-                 placeholder="Briefly describe your issue" required>
-        </div>
+      <label for="priority">Priority</label>
+      <select id="priority" name="priority" required>
+        <option value="Normal">Normal</option>
+        <option value="High">High</option>
+        <option value="Urgent">Urgent</option>
+      </select>
 
-        <div class="form-group">
-          <label for="message">Describe Your Issue *</label>
-          <textarea id="message" name="message"
-                    placeholder="Explain your issue in detail..."
-                    required></textarea>
-        </div>
+      <label for="description">Describe the Problem</label>
+      <textarea id="description" name="message"
+        placeholder="Explain what happened and any error message..." required></textarea>
 
-        <button type="submit" class="submit-btn" id="submitBtn">
-          Submit Ticket
-        </button>
-
-        <div id="status" role="status" aria-live="polite"></div>
-      </form>
-    </section>
-
-    <section class="contact-card">
-      <h3>Need to Contact Us Directly?</h3>
-
-      <p>
-        <strong>Email:</strong>
-        <a href="mailto:hanihasanyare4@gamli.com">
-          hanihasanyare4@gamli.com
-        </a>
-      </p>
-
-      <p>
-        <strong>Phone:</strong>
-        <a href="tel:0725467098">0725467098</a>
-      </p>
-
-      <p>
-        <strong>WhatsApp:</strong>
-        <a href="https://wa.me/254725467098"
-           target="_blank" rel="noopener noreferrer">
-          Message us on WhatsApp
-        </a>
-      </p>
-
-      <p>
-        <strong>LinkedIn:</strong>
-        <a href="https://www.linkedin.com/in/hani-hassan-yare-03856a354"
-           target="_blank" rel="noopener noreferrer">
-          Visit Hani's LinkedIn Profile
-        </a>
-      </p>
-    </section>
+      <button type="submit" id="ticketButton">Submit Ticket</button>
+      <p id="ticketStatus" role="status" aria-live="polite"></p>
+    </form>
   </main>
 
-  <footer>
-    <p>&copy; 2026 NDMA Helpdesk. All rights reserved.</p>
-    <p>Supporting communities through timely information and assistance.</p>
-    <p>
-      <a href="contact.html">Contact Us</a>
-      <a href="faq.html">FAQs</a>
-    </p>
-  </footer>
+  <footer>© 2026 NDMA ICT Support | Built by Hani Hassan Yare</footer>
 
-  <!-- EmailJS setup goes here in Step 2 -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    // Replace these values with your own EmailJS account details.
+    const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+    const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
+    const EMAILJS_TEMPLATE_ID = "YOUR_TICKET_TEMPLATE_ID";
 
+    const form = document.getElementById("ticketForm");
+    const status = document.getElementById("ticketStatus");
+    const button = document.getElementById("ticketButton");
+
+    form.addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      if (EMAILJS_PUBLIC_KEY.startsWith("YOUR_") ||
+          EMAILJS_SERVICE_ID.startsWith("YOUR_") ||
+          EMAILJS_TEMPLATE_ID.startsWith("YOUR_")) {
+        status.textContent =
+          "Email is not configured yet. Add your EmailJS keys first.";
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = "Submitting...";
+      status.textContent = "";
+
+      try {
+        emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+        await emailjs.sendForm(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          form
+        );
+
+        status.textContent =
+          "Your ticket has been submitted successfully. A confirmation email is not sent automatically by this form.";
+        form.reset();
+      } catch (error) {
+        console.error(error);
+        status.textContent =
+          "Submission failed. Please check your EmailJS setup and try again.";
+      } finally {
+        button.disabled = false;
+        button.textContent = "Submit Ticket";
+      }
+    });
+  </script>
 </body>
 </html>
