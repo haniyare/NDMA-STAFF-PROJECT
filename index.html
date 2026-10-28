@@ -2,738 +2,783 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NDMA ICT Support | Home</title>
-
-<style>
-:root {
-    --dark: #043b2b;
-    --deep: #02271d;
-    --green: #08784c;
-    --mint: #c5f1d1;
-    --white: #ffffff;
-    --pale: #f3f8f4;
-    --text: #26392f;
-    --muted: #64746a;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: var(--pale);
-    color: var(--text);
-    line-height: 1.7;
-}
-
-a { text-decoration: none; }
-
-.topbar {
-    background: var(--deep);
-    color: #e5f4e9;
-    padding: 8px 7%;
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    flex-wrap: wrap;
-    font-size: 12px;
-}
-
-header {
-    background: var(--dark);
-    color: white;
-    padding: 16px 7%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 22px;
-    flex-wrap: wrap;
-    border-bottom: 3px solid var(--mint);
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-
-.logo-box {
-    width: 78px;
-    height: 78px;
-    padding: 6px;
-    border-radius: 14px;
-    background: white;
-    display: grid;
-    place-items: center;
-    box-shadow: 0 5px 18px #0002;
-    flex-shrink: 0;
-}
-
-.logo-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.brand h2 {
-    font-size: 21px;
-    line-height: 1.3;
-    letter-spacing: .5px;
-}
-
-.brand p {
-    font-size: 11px;
-    color: var(--mint);
-    letter-spacing: 1.5px;
-    margin-top: 5px;
-}
-
-nav {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-nav a {
-    color: white;
-    font-size: 13px;
-    font-weight: 600;
-    transition: .25s;
-}
-
-nav a:hover { color: var(--mint); }
-
-nav .ticket-link {
-    color: var(--deep);
-    background: var(--mint);
-    padding: 10px 16px;
-    border-radius: 7px;
-}
-
-nav .ticket-link:hover {
-    background: white;
-    color: var(--deep);
-}
-
-/* HERO */
-
-.hero {
-    min-height: 590px;
-    display: flex;
-    align-items: center;
-    padding: 80px 8%;
-    color: white;
-    background:
-        linear-gradient(105deg,
-            rgba(2, 36, 25, .97),
-            rgba(4, 73, 47, .87)),
-        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=85")
-        center/cover no-repeat;
-}
-
-.hero-content { max-width: 780px; }
-
-.eyebrow {
-    display: inline-block;
-    color: var(--mint);
-    border: 1px solid #c5f1d160;
-    border-radius: 30px;
-    padding: 8px 16px;
-    font-size: 12px;
-    letter-spacing: 2px;
-    font-weight: bold;
-    margin-bottom: 23px;
-}
-
-.hero h1 {
-    font-size: clamp(38px, 5.5vw, 66px);
-    line-height: 1.12;
-    letter-spacing: -1px;
-    margin-bottom: 24px;
-}
-
-.hero h1 span { color: var(--mint); }
-
-.hero p {
-    max-width: 650px;
-    color: #e1eee5;
-    font-size: 17px;
-    margin-bottom: 30px;
-}
-
-.buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-}
-
-.btn {
-    display: inline-block;
-    padding: 13px 23px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: bold;
-    transition: .25s;
-}
-
-.btn-green {
-    background: var(--mint);
-    color: var(--deep);
-}
-
-.btn-green:hover {
-    background: white;
-    transform: translateY(-3px);
-}
-
-.btn-outline {
-    border: 1px solid #ffffffa0;
-    color: white;
-}
-
-.btn-outline:hover {
-    background: white;
-    color: var(--dark);
-}
-
-/* HIGHLIGHTS */
-
-.highlights {
-    max-width: 1080px;
-    margin: -35px auto 0;
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 12px 35px #073b2b14;
-}
-
-.highlight {
-    padding: 25px 20px;
-    text-align: center;
-}
-
-.highlight + .highlight {
-    border-left: 1px solid #e4eee6;
-}
-
-.highlight .icon { font-size: 30px; }
-
-.highlight h3 {
-    color: var(--dark);
-    font-size: 16px;
-    margin: 5px 0;
-}
-
-.highlight p {
-    color: var(--muted);
-    font-size: 13px;
-}
-
-/* SECTIONS */
-
-.section {
-    padding: 85px 8%;
-}
-
-.section-title {
-    max-width: 680px;
-    text-align: center;
-    margin: 0 auto 42px;
-}
-
-.section-title small,
-.about-copy small {
-    color: var(--green);
-    font-weight: 800;
-    letter-spacing: 2px;
-    font-size: 12px;
-}
-
-.section-title h2 {
-    color: var(--dark);
-    font-size: clamp(29px, 4vw, 39px);
-    line-height: 1.25;
-    margin: 12px 0;
-}
-
-.section-title p { color: var(--muted); }
-
-/* SERVICES */
-
-.services {
-    max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 23px;
-}
-
-.service-card {
-    background: white;
-    border: 1px solid #e1ebe3;
-    border-radius: 14px;
-    padding: 29px;
-    transition: .3s;
-}
-
-.service-card:hover {
-    transform: translateY(-6px);
-    border-color: #a9d9b7;
-    box-shadow: 0 14px 32px #073b2b12;
-}
-
-.service-icon {
-    width: 59px;
-    height: 59px;
-    display: grid;
-    place-items: center;
-    border-radius: 13px;
-    background: #e6f5e9;
-    font-size: 27px;
-    margin-bottom: 19px;
-}
-
-.service-card h3 {
-    color: var(--dark);
-    font-size: 18px;
-    margin-bottom: 9px;
-}
-
-.service-card p {
-    color: var(--muted);
-    font-size: 14px;
-    margin-bottom: 18px;
-}
-
-.service-card a {
-    color: var(--green);
-    font-size: 13px;
-    font-weight: 800;
-}
-
-/* ABOUT */
-
-.about-section { background: #e8f3eb; }
-
-.about-grid {
-    max-width: 1100px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
-}
-
-.about-copy h2 {
-    color: var(--dark);
-    font-size: clamp(30px, 4vw, 42px);
-    line-height: 1.2;
-    margin: 13px 0 20px;
-}
-
-.about-copy p {
-    color: #53675a;
-    margin-bottom: 16px;
-}
-
-.about-panel {
-    background: var(--dark);
-    padding: 35px;
-    border-radius: 16px;
-    color: white;
-}
-
-.about-panel h3 {
-    color: var(--mint);
-    font-size: 23px;
-    margin-bottom: 18px;
-}
-
-.about-panel p {
-    padding: 12px 0;
-    border-bottom: 1px solid #ffffff25;
-    font-size: 14px;
-}
-
-.about-panel p:last-child { border-bottom: none; }
-
-/* OFFICE ADDRESS */
-
-.location-card {
-    max-width: 900px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    background: white;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid #e1ebe3;
-    box-shadow: 0 12px 35px #073b2b0c;
-}
-
-.location-details { padding: 38px; }
-
-.location-details h3 {
-    color: var(--dark);
-    font-size: 28px;
-    margin: 12px 0;
-}
-
-.location-details p {
-    color: var(--muted);
-    font-size: 14px;
-    margin-bottom: 17px;
-}
-
-.location-visual {
-    background: linear-gradient(145deg, #08784c, #02271d);
-    min-height: 300px;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-}
-
-.location-visual .pin {
-    font-size: 42px;
-    width: 88px;
-    height: 88px;
-    border-radius: 50%;
-    background: #ffffff17;
-    border: 1px solid #ffffff45;
-    display: grid;
-    place-items: center;
-    margin-bottom: 18px;
-}
-
-.location-visual h3 {
-    color: var(--mint);
-    font-size: 25px;
-}
-
-.location-visual p {
-    color: #e1eee5;
-    font-size: 14px;
-}
-
-/* CONTACT */
-
-.contact-banner {
-    padding: 65px 8%;
-    text-align: center;
-    background: linear-gradient(120deg, #02271d, #08784c);
-    color: white;
-}
-
-.contact-banner h2 {
-    font-size: clamp(28px, 4vw, 39px);
-    margin-bottom: 12px;
-}
-
-.contact-banner p {
-    color: #e0eee5;
-    margin-bottom: 25px;
-}
-
-/* FOOTER */
-
-footer {
-    padding: 30px 7%;
-    text-align: center;
-    background: #021e16;
-    color: #d7e6dc;
-    font-size: 12px;
-}
-
-footer strong {
-    display: block;
-    color: var(--mint);
-    font-size: 16px;
-    letter-spacing: 1px;
-    margin-bottom: 7px;
-}
-
-/* MOBILE RESPONSIVE */
-
-@media (max-width: 900px) {
-    header { justify-content: center; }
-    nav { justify-content: center; }
-    .services { grid-template-columns: repeat(2, 1fr); }
-    .highlights { margin: 25px 5% 0; }
-}
-
-@media (max-width: 620px) {
-    .topbar { justify-content: center; text-align: center; }
-
-    header { padding: 18px 5%; }
-
-    .brand h2 { font-size: 17px; }
-    .brand p { font-size: 9px; letter-spacing: 1px; }
-    .logo-box { width: 64px; height: 64px; }
-
-    nav { gap: 13px; }
-    nav a { font-size: 12px; }
-
-    .hero { padding: 65px 6%; min-height: 520px; }
-    .hero p { font-size: 15px; }
-
-    .buttons { flex-direction: column; }
-    .buttons .btn { text-align: center; }
-
-    .highlights { grid-template-columns: 1fr; }
-    .highlight + .highlight {
-        border-left: none;
-        border-top: 1px solid #e4eee6;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NDMA ICT Support</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
-    .section { padding: 60px 6%; }
-    .services { grid-template-columns: 1fr; }
-    .about-grid, .location-card { grid-template-columns: 1fr; }
-    .about-panel, .location-details { padding: 27px; }
-    .location-visual { min-height: 230px; }
-}
-</style>
+    :root {
+      --green: #064b35;
+      --deep-green: #022f22;
+      --bright-green: #138052;
+      --light-green: #e9f5ee;
+      --white: #ffffff;
+      --text: #24352d;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7faf8;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* GREEN TOP BAR */
+    .top-bar {
+      background: var(--deep-green);
+      color: white;
+      padding: 10px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 13px;
+    }
+
+    .top-bar a {
+      color: #d9f5e5;
+      text-decoration: none;
+    }
+
+    /* WHITE NAVIGATION */
+    header {
+      background: white;
+      border-bottom: 4px solid var(--bright-green);
+      box-shadow: 0 5px 18px rgba(0, 45, 28, 0.09);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      max-width: 1250px;
+      margin: auto;
+      padding: 15px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--green);
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 65px;
+      height: 65px;
+      object-fit: contain;
+    }
+
+    .brand h2 {
+      font-size: 19px;
+      line-height: 1.3;
+    }
+
+    .brand span {
+      display: block;
+      font-size: 12px;
+      color: #64756b;
+      font-weight: normal;
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #243b30;
+      font-weight: bold;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--bright-green);
+    }
+
+    .nav-links .ticket-link {
+      background: var(--green);
+      color: white;
+      padding: 11px 19px;
+      border-radius: 6px;
+    }
+
+    .nav-links .ticket-link:hover {
+      background: var(--bright-green);
+      color: white;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      min-height: 590px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(2, 37, 26, 0.96), rgba(4, 75, 53, 0.80)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=85");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 85px 7%;
+      border-bottom: 8px solid #138052;
+    }
+
+    .hero-content {
+      max-width: 780px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.35);
+      color: #d4f6df;
+      padding: 7px 15px;
+      border-radius: 30px;
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 60px);
+      line-height: 1.15;
+      margin-bottom: 22px;
+      letter-spacing: -1px;
+    }
+
+    .hero h1 span {
+      color: #8ee2ae;
+    }
+
+    .hero p {
+      font-size: 17px;
+      max-width: 650px;
+      color: #e1eee7;
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 14px 24px;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: #168653;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #20a467;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 2px solid white;
+      color: white;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: var(--green);
+    }
+
+    /* WELCOME STRIP */
+    .welcome-strip {
+      background: white;
+      padding: 28px 7%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      border-bottom: 1px solid #e3ece6;
+    }
+
+    .welcome-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .welcome-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--light-green);
+      color: var(--green);
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 23px;
+      flex-shrink: 0;
+    }
+
+    .welcome-item h3 {
+      font-size: 15px;
+      color: var(--green);
+    }
+
+    .welcome-item p {
+      font-size: 13px;
+      color: #68776e;
+    }
+
+    /* GENERAL SECTIONS */
+    .section {
+      padding: 80px 7%;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 45px;
+    }
+
+    .section-heading small {
+      color: var(--bright-green);
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      color: var(--green);
+      font-size: clamp(28px, 4vw, 38px);
+      margin: 10px 0;
+    }
+
+    .section-heading p {
+      color: #66766c;
+    }
+
+    /* SERVICE CARDS */
+    .services-grid {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .service-card {
+      background: white;
+      border: 1px solid #e1ece5;
+      border-radius: 13px;
+      padding: 30px;
+      box-shadow: 0 8px 25px rgba(3, 65, 40, 0.05);
+      transition: 0.3s;
+      border-top: 4px solid var(--bright-green);
+    }
+
+    .service-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 15px 32px rgba(3, 65, 40, 0.12);
+    }
+
+    .service-icon {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      background: var(--light-green);
+      border-radius: 12px;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      color: var(--green);
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: #68766e;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .service-card a {
+      color: var(--bright-green);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    /* ABOUT SECTION */
+    .about-section {
+      background: var(--light-green);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 55px;
+    }
+
+    .about-panel {
+      background: var(--green);
+      color: white;
+      padding: 45px;
+      border-radius: 15px;
+      box-shadow: 0 15px 35px rgba(3, 65, 40, 0.15);
+    }
+
+    .about-panel .big-icon {
+      font-size: 50px;
+      margin-bottom: 15px;
+    }
+
+    .about-panel h3 {
+      font-size: 27px;
+      margin-bottom: 15px;
+    }
+
+    .about-panel p {
+      color: #e1eee7;
+    }
+
+    .about-copy small {
+      color: var(--bright-green);
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+
+    .about-copy h2 {
+      font-size: 35px;
+      line-height: 1.25;
+      color: var(--green);
+      margin: 12px 0 20px;
+    }
+
+    .about-copy p {
+      color: #5f7065;
+      margin-bottom: 20px;
+    }
+
+    .about-copy ul {
+      list-style: none;
+      margin-bottom: 25px;
+    }
+
+    .about-copy li {
+      margin: 10px 0;
+      color: #334d3d;
+    }
+
+    .about-copy li::before {
+      content: "✓";
+      color: var(--bright-green);
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    /* GREEN CALL TO ACTION */
+    .cta {
+      background: linear-gradient(120deg, var(--green), #08764d);
+      color: white;
+      text-align: center;
+      padding: 65px 7%;
+    }
+
+    .cta h2 {
+      font-size: clamp(28px, 4vw, 38px);
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      color: #e0f2e7;
+      margin-bottom: 25px;
+    }
+
+    .cta .btn {
+      background: white;
+      color: var(--green);
+    }
+
+    .cta .btn:hover {
+      background: #e3f7e9;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #02271d;
+      color: white;
+      border-top: 7px solid #138052;
+    }
+
+    .footer-content {
+      max-width: 1250px;
+      margin: auto;
+      padding: 55px 25px 35px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-column h3 {
+      margin-bottom: 17px;
+      color: #a9e8c1;
+      font-size: 18px;
+    }
+
+    .footer-column p,
+    .footer-column a {
+      color: #d1e2d7;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .footer-column a {
+      display: block;
+      margin: 8px 0;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      background: #011e16;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      text-align: center;
+      padding: 18px;
+      color: #c7dbce;
+      font-size: 13px;
+    }
+
+    .footer-bottom strong {
+      color: #9be4b7;
+    }
+
+    /* MOBILE FRIENDLY */
+    @media (max-width: 900px) {
+      .nav-links {
+        gap: 15px;
+      }
+
+      .welcome-strip,
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .about-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .top-bar {
+        justify-content: center;
+        text-align: center;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      .brand {
+        justify-content: center;
+      }
+
+      .nav-links {
+        width: 100%;
+        gap: 13px;
+      }
+
+      .nav-links a {
+        font-size: 13px;
+      }
+
+      .hero {
+        min-height: 520px;
+        padding: 65px 6%;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .welcome-strip,
+      .services-grid,
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 60px 6%;
+      }
+
+      .about-panel {
+        padding: 30px;
+      }
+
+      .about-copy h2 {
+        font-size: 29px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="topbar">
-    <span>National Drought Management Authority</span>
-    <span>ICT Support Portal | Kenya</span>
-</div>
+  <!-- DARK GREEN TOP BAR -->
+  <div class="top-bar">
+    <span>NDMA ICT SUPPORT • Reliable Technology Assistance</span>
+    <span>📍 Lorho House, Standard Street</span>
+  </div>
 
-<header>
-    <a href="index.html" class="brand">
-        <div class="logo-box">
-            <img src="images/ndma-logo.png" alt="NDMA Logo">
-        </div>
-        <div>
-            <h2>NDMA ICT SUPPORT</h2>
-            <p>TECHNOLOGY • SERVICE • SUPPORT</p>
-        </div>
-    </a>
-
+  <!-- WHITE NAVIGATION BAR -->
+  <header>
     <nav>
+      <a class="brand" href="index.html">
+        <img src="images/ndma-logo.png" alt="NDMA Logo"
+             onerror="this.style.display='none'">
+        <div>
+          <h2>NDMA ICT SUPPORT</h2>
+          <span>Technology • Support • Solutions</span>
+        </div>
+      </a>
+
+      <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="about.html">About Us</a>
-        <a href="#services">Services</a>
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Contact</a>
-        <a href="ticket.html" class="ticket-link">Submit Ticket ↗</a>
+        <a class="ticket-link" href="ticket.html">Submit a Ticket ↗</a>
+      </div>
     </nav>
-</header>
+  </header>
 
-<main>
-
-<section class="hero">
-    <div class="hero-content">
-        <div class="eyebrow">✦ &nbsp; YOUR DIGITAL SUPPORT PARTNER</div>
+  <!-- HERO -->
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">YOUR ICT SUPPORT PARTNER</span>
 
         <h1>
-            WELCOME TO<br>
-            NDMA <span>ICT SUPPORT</span>
+          Welcome to NDMA<br>
+          <span>ICT Support</span>
         </h1>
 
         <p>
-            Technology challenges should not slow your work.
-            Find ICT assistance, report technical issues, and
-            access support through one convenient portal.
+          Technology problems should not stop your work. Get support for
+          ICT issues, request technical assistance, and find helpful
+          information through our support portal.
         </p>
 
-        <div class="buttons">
-            <a href="ticket.html" class="btn btn-green">
-                🎫 &nbsp; Submit a Ticket
-            </a>
-            <a href="#services" class="btn btn-outline">
-                Explore Our Services →
-            </a>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="ticket.html">
+            Submit a Support Ticket →
+          </a>
+
+          <a class="btn btn-outline" href="about.html">
+            Learn About Us
+          </a>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<div class="highlights">
-    <div class="highlight">
-        <div class="icon">💻</div>
-        <h3>Technical Support</h3>
-        <p>Help with everyday ICT problems</p>
-    </div>
-    <div class="highlight">
-        <div class="icon">🎫</div>
-        <h3>Simple Reporting</h3>
-        <p>Report issues through a ticket</p>
-    </div>
-    <div class="highlight">
-        <div class="icon">🔐</div>
-        <h3>ICT Assistance</h3>
-        <p>Support for approved work requests</p>
-    </div>
-</div>
+    <!-- WELCOME STRIP -->
+    <section class="welcome-strip">
+      <div class="welcome-item">
+        <div class="welcome-icon">💻</div>
+        <div>
+          <h3>Technical Assistance</h3>
+          <p>Help with ICT-related issues</p>
+        </div>
+      </div>
 
-<section class="section" id="services">
-    <div class="section-title">
-        <small>OUR SERVICES</small>
-        <h2>How Can We Help You?</h2>
+      <div class="welcome-item">
+        <div class="welcome-icon">🎫</div>
+        <div>
+          <h3>Support Tickets</h3>
+          <p>Submit a request for assistance</p>
+        </div>
+      </div>
+
+      <div class="welcome-item">
+        <div class="welcome-icon">🔒</div>
+        <div>
+          <h3>Reliable Support</h3>
+          <p>Helping keep your work connected</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section">
+      <div class="section-heading">
+        <small>HOW WE CAN HELP</small>
+        <h2>Our ICT Support Services</h2>
         <p>
-            Choose the service you need and find the right place
-            to report your ICT issue.
+          Find the right support for your technology needs in one convenient place.
         </p>
-    </div>
+      </div>
 
-    <div class="services">
+      <div class="services-grid">
         <article class="service-card">
-            <div class="service-icon">🖥️</div>
-            <h3>Computer & Software</h3>
-            <p>Help with computer performance, applications, and software problems.</p>
-            <a href="ticket.html">Report an Issue →</a>
+          <div class="service-icon">🖥️</div>
+          <h3>Computer Support</h3>
+          <p>
+            Get assistance with computer problems, software issues,
+            and everyday technical challenges.
+          </p>
+          <a href="ticket.html">Request assistance →</a>
         </article>
 
         <article class="service-card">
-            <div class="service-icon">🌐</div>
-            <h3>Network & Internet</h3>
-            <p>Report network connections, internet access, and connectivity issues.</p>
-            <a href="ticket.html">Request Support →</a>
+          <div class="service-icon">🌐</div>
+          <h3>Network Support</h3>
+          <p>
+            Find help with connectivity problems, internet access,
+            and network-related concerns.
+          </p>
+          <a href="ticket.html">Report a problem →</a>
         </article>
 
         <article class="service-card">
-            <div class="service-icon">📧</div>
-            <h3>Email Support</h3>
-            <p>Get assistance with work email setup and common email problems.</p>
-            <a href="contact.html">Contact Support →</a>
+          <div class="service-icon">📨</div>
+          <h3>Email Support</h3>
+          <p>
+            Request help with email access, account configuration,
+            and common email problems.
+          </p>
+          <a href="ticket.html">Get email support →</a>
         </article>
 
         <article class="service-card">
-            <div class="service-icon">🖨️</div>
-            <h3>Hardware & Printers</h3>
-            <p>Report issues affecting computers, printers, and office equipment.</p>
-            <a href="ticket.html">Submit a Ticket →</a>
+          <div class="service-icon">🛠️</div>
+          <h3>Software Assistance</h3>
+          <p>
+            Report application errors and request help with approved
+            workplace software.
+          </p>
+          <a href="ticket.html">Get software help →</a>
         </article>
 
         <article class="service-card">
-            <div class="service-icon">🔑</div>
-            <h3>Account & Access</h3>
-            <p>Request assistance with authorized account and ICT access issues.</p>
-            <a href="ticket.html">Get Assistance →</a>
+          <div class="service-icon">🔐</div>
+          <h3>Access & Accounts</h3>
+          <p>
+            Request assistance with account access and password-related
+            technical issues.
+          </p>
+          <a href="ticket.html">Request account help →</a>
         </article>
 
         <article class="service-card">
-            <div class="service-icon">❓</div>
-            <h3>Help & Information</h3>
-            <p>Find useful information and answers to common ICT questions.</p>
-            <a href="faq.html">View FAQs →</a>
+          <div class="service-icon">❓</div>
+          <h3>Frequently Asked Questions</h3>
+          <p>
+            Explore common questions and helpful information before
+            submitting a support request.
+          </p>
+          <a href="faq.html">View FAQs →</a>
         </article>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about-section">
+      <div class="about-panel">
+        <div class="big-icon">🌿</div>
+        <h3>Supporting Technology. Enabling Service.</h3>
+        <p>
+          A helpful ICT support portal makes it easier to report technical
+          problems and find the information needed to keep work moving.
+        </p>
+      </div>
+
+      <div class="about-copy">
+        <small>ABOUT OUR PORTAL</small>
+        <h2>Simple, Accessible ICT Support</h2>
+        <p>
+          The NDMA ICT Support website provides a central place to learn
+          about support services, find answers to common questions, and
+          access the support ticket page.
+        </p>
+
+        <ul>
+          <li>Easy access to support information</li>
+          <li>Simple links for reporting technical issues</li>
+          <li>Helpful information in one place</li>
+          <li>A clean design for desktop and mobile devices</li>
+        </ul>
+
+        <a class="btn btn-primary" href="about.html">Read More About Us →</a>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="cta">
+      <h2>Need Help With an ICT Problem?</h2>
+      <p>Visit the ticket page to begin submitting your support request.</p>
+      <a class="btn" href="ticket.html">Go to Support Tickets →</a>
+    </section>
+  </main>
+
+  <!-- DARK GREEN FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>NDMA ICT Support</h3>
+        <p>
+          Providing a central online point for ICT support information
+          and technical assistance requests.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="faq.html">Frequently Asked Questions</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="ticket.html">Submit a Ticket</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Office Location</h3>
+        <p>📍 Lorho House, Standard Street</p>
+        <p style="margin-top: 10px;">ICT Support Portal</p>
+      </div>
     </div>
-</section>
 
-<section class="section about-section">
-    <div class="about-grid">
-        <div class="about-copy">
-            <small>ABOUT OUR PORTAL</small>
-            <h2>Making Technology Work Better</h2>
-            <p>
-                The NDMA ICT Support portal is designed to give staff
-                a convenient starting point for finding ICT information
-                and reporting technical challenges.
-            </p>
-            <p>
-                It aims to make support requests easier to communicate
-                and help staff find the appropriate assistance.
-            </p>
-            <a href="about.html" class="btn btn-green">
-                Learn More About Us →
-            </a>
-        </div>
-
-        <div class="about-panel">
-            <h3>Our Service Principles</h3>
-            <p>✓ &nbsp; Professional technical assistance</p>
-            <p>✓ &nbsp; Clear reporting of ICT issues</p>
-            <p>✓ &nbsp; Responsible handling of information</p>
-            <p>✓ &nbsp; A productive digital workplace</p>
-        </div>
+    <div class="footer-bottom">
+      © <span id="year"></span> NDMA ICT Support.
+      Built by <strong>Hani Hassan Yare</strong>.
     </div>
-</section>
+  </footer>
 
-<section class="section">
-    <div class="section-title">
-        <small>FIND US</small>
-        <h2>Our Office Location</h2>
-        <p>See the office address for NDMA ICT Support.</p>
-    </div>
-
-    <div class="location-card">
-        <div class="location-details">
-            <h3>Lorho House</h3>
-            <p>National Drought Management Authority (NDMA)</p>
-
-            <p>
-                <strong>📍 Address:</strong><br>
-                Lorho House, Standard Street
-            </p>
-
-            <p>
-                <strong>💻 Department:</strong><br>
-                ICT Support Office
-            </p>
-
-            <a
-                class="btn btn-green"
-                href="https://www.google.com/maps/search/?api=1&query=Lorho+House+Standard+Street+Kenya"
-                target="_blank"
-                rel="noopener noreferrer">
-                View on Google Maps ↗
-            </a>
-        </div>
-
-        <div class="location-visual">
-            <div class="pin">📍</div>
-            <h3>Lorho House</h3>
-            <p>Standard Street</p>
-            <p>NDMA ICT Support</p>
-        </div>
-    </div>
-</section>
-
-<section class="contact-banner">
-    <h2>Need ICT Assistance?</h2>
-    <p>
-        Let us know about your technical issue so it can be
-        directed to the appropriate support team.
-    </p>
-
-    <div class="buttons" style="justify-content:center;">
-        <a href="ticket.html" class="btn btn-green">Submit a Ticket →</a>
-        <a href="contact.html" class="btn btn-outline">Contact Us</a>
-    </div>
-</section>
-
-</main>
-
-<footer>
-    <strong>NDMA ICT SUPPORT</strong>
-    <p>National Drought Management Authority</p>
-    <p>Lorho House, Standard Street</p>
-    <p>Built by Hani Hassan Yare</p>
-    <p>© <span id="year"></span> NDMA ICT Support.</p>
-</footer>
-
-<script>
-document.getElementById("year").textContent =
-    new Date().getFullYear();
-</script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>
