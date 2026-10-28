@@ -1,214 +1,483 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us | NDMA ICT Support</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f3f7f4;
-      color: #24352b;
-    }
-    nav {
-      background: #064e32;
-      padding: 20px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      color: white;
-    }
-    nav h2 { margin: 0; }
-    nav a { color: white; text-decoration: none; margin: 5px 8px; }
-    .hero {
-      background: #08613d;
-      color: white;
-      padding: 55px 20px;
-      text-align: center;
-    }
-    .hero h1 { font-size: 38px; margin-bottom: 10px; }
-    .container {
-      max-width: 1050px;
-      margin: 35px auto;
-      padding: 20px;
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 25px;
-    }
-    .card {
-      background: white;
-      border-radius: 14px;
-      padding: 28px;
-      box-shadow: 0 8px 25px #183e2412;
-    }
-    .contact-item { margin: 24px 0; line-height: 1.7; }
-    .contact-item a { color: #087443; overflow-wrap: anywhere; }
-    label { display: block; margin-top: 15px; font-weight: bold; }
-    input, textarea, select {
-      width: 100%;
-      padding: 13px;
-      margin-top: 7px;
-      border: 1px solid #cbd8ce;
-      border-radius: 7px;
-      font: inherit;
-    }
-    textarea { min-height: 130px; resize: vertical; }
-    button {
-      width: 100%;
-      margin-top: 20px;
-      padding: 14px;
-      border: none;
-      border-radius: 7px;
-      background: #087443;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    button:hover { background: #064e32; }
-    #formStatus { line-height: 1.6; overflow-wrap: anywhere; }
-    footer {
-      background: #043c27;
-      color: white;
-      text-align: center;
-      padding: 24px;
-    }
-    @media(max-width: 720px) {
-      .container { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 30px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | NDMA ICT Support</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7f4;
+            color: #26352b;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #064e32;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            border: 2px solid white;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo h2 {
+            font-size: 20px;
+        }
+
+        .logo p {
+            font-size: 12px;
+            color: #d7eadf;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #b8efc8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #064e32, #087647);
+            color: white;
+            text-align: center;
+            padding: 65px 20px;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            font-size: 16px;
+            color: #e3f4e8;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 45px auto;
+            padding: 0 20px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .intro h2 {
+            color: #064e32;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .intro p {
+            color: #607067;
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .contact-info,
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 5px 22px rgba(0, 0, 0, 0.07);
+        }
+
+        .contact-info h2,
+        .contact-form h2 {
+            color: #064e32;
+            margin-bottom: 20px;
+            font-size: 23px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 13px;
+            margin-bottom: 22px;
+            align-items: flex-start;
+        }
+
+        .info-icon {
+            background: #e4f3e8;
+            color: #064e32;
+            min-width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .info-item h3 {
+            font-size: 16px;
+            margin-bottom: 4px;
+            color: #26352b;
+        }
+
+        .info-item p,
+        .info-item a {
+            font-size: 14px;
+            color: #5b6a60;
+            overflow-wrap: anywhere;
+        }
+
+        .info-item a:hover {
+            color: #087647;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #26352b;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #d5ded7;
+            border-radius: 7px;
+            font-family: inherit;
+            font-size: 14px;
+            background: #fff;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #087647;
+            box-shadow: 0 0 0 3px rgba(8, 118, 71, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        .submit-btn {
+            background: #064e32;
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 7px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #087647;
+        }
+
+        .notice {
+            background: #eaf5ed;
+            border-left: 4px solid #087647;
+            padding: 13px;
+            border-radius: 5px;
+            margin-top: 17px;
+            color: #385444;
+            font-size: 13px;
+        }
+
+        .status {
+            margin-top: 15px;
+            font-size: 14px;
+            overflow-wrap: anywhere;
+        }
+
+        footer {
+            background: #043b26;
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            margin-top: 55px;
+        }
+
+        footer p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        footer a {
+            color: #c6efd3;
+            text-decoration: none;
+        }
+
+        @media (max-width: 760px) {
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 29px;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 22px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <nav>
-    <h2>NDMA ICT Support</h2>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="contact.html">Contact</a>
-      <a href="ticket.html">Submit Ticket</a>
-    </div>
-  </nav>
 
-  <section class="hero">
-    <h1>Contact Us</h1>
-    <p>We're here to help with your ICT support needs.</p>
-  </section>
+    <header>
+        <div class="logo">
+            <div class="logo-icon">N</div>
+            <div>
+                <h2>NDMA ICT SUPPORT</h2>
+                <p>Technology Support & Assistance</p>
+            </div>
+        </div>
 
-  <main class="container">
-    <section class="card">
-      <h2>Get in Touch</h2>
-      <p>Contact our ICT Support team for assistance.</p>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html" class="active">Contact Us</a>
+            <a href="faq.html">FAQ</a>
+            <a href="ticket.html">Submit Ticket</a>
+        </nav>
+    </header>
 
-      <div class="contact-item">
-        <strong>✉ Email</strong><br>
-        <a href="mailto:hanihassanyare@gmali.com">
-          hanihassanyare@gmali.com
-        </a>
-      </div>
-
-      <div class="contact-item">
-        <strong>☎ Phone</strong><br>
-        <a href="tel:0725467098">0725467098</a>
-      </div>
-
-      <div class="contact-item">
-        <strong>LinkedIn</strong><br>
-        <a href="https://www.linkedin.com/in/hani-hassan-yare-03856a354"
-           target="_blank" rel="noopener noreferrer">
-          View LinkedIn Profile
-        </a>
-      </div>
+    <section class="hero">
+        <h1>Contact Us</h1>
+        <p>
+            Need technical assistance? Have a question or facing an ICT problem?
+            Our contact page helps you reach the ICT support team.
+        </p>
     </section>
 
-    <section class="card">
-      <h2>Send Us a Message</h2>
-      <p>Complete this form and we'll process your message.</p>
+    <main class="container">
+        <div class="intro">
+            <h2>We Are Here to Help</h2>
+            <p>Send us a message and explain how we can assist you.</p>
+        </div>
 
-      <form id="contactForm">
-        <label for="name">Full Name</label>
-        <input id="name" name="from_name" required>
+        <div class="contact-layout">
 
-        <label for="email">Your Email</label>
-        <input id="email" name="reply_to" type="email" required>
+            <section class="contact-info">
+                <h2>Get in Touch</h2>
 
-        <label for="subject">Subject</label>
-        <select id="subject" name="subject" required>
-          <option value="">Choose a subject</option>
-          <option>Computer Problem</option>
-          <option>Network Problem</option>
-          <option>Software Installation</option>
-          <option>Account Access</option>
-          <option>Other ICT Issue</option>
-        </select>
+                <div class="info-item">
+                    <div class="info-icon">✉</div>
+                    <div>
+                        <h3>Email Address</h3>
+                        <a href="mailto:hanihassanyare84@gmali.com">
+                            hanihassanyare84@gmali.com
+                        </a>
+                    </div>
+                </div>
 
-        <label for="message">Your Message</label>
-        <textarea id="message" name="message"
-                  placeholder="Write your message here..." required></textarea>
+                <div class="info-item">
+                    <div class="info-icon">☎</div>
+                    <div>
+                        <h3>Phone Number</h3>
+                        <a href="tel:0725467098">0725467098</a>
+                    </div>
+                </div>
 
-        <button type="submit" id="sendButton">Send Message</button>
-        <p id="formStatus" role="status" aria-live="polite"></p>
-      </form>
-    </section>
-  </main>
+                <div class="info-item">
+                    <div class="info-icon">💻</div>
+                    <div>
+                        <h3>ICT Support</h3>
+                        <p>Technical assistance, system issues and general ICT inquiries.</p>
+                    </div>
+                </div>
 
-  <footer>© 2026 NDMA ICT Support | Built by Hani Hassan Yare</footer>
+                <div class="info-item">
+                    <div class="info-icon">in</div>
+                    <div>
+                        <h3>LinkedIn</h3>
+                        <a
+                            href="https://www.linkedin.com/in/hani-hassan-yare-03856a354"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            Visit my LinkedIn profile
+                        </a>
+                    </div>
+                </div>
 
-  <!-- EmailJS library -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script>
-    /*
-      Replace these three placeholders with the values from your
-      EmailJS account. Set the recipient email in your EmailJS template.
-    */
-    const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
-    const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
-    const EMAILJS_TEMPLATE_ID = "YOUR_CONTACT_TEMPLATE_ID";
+                <div class="notice">
+                    <strong>Need technical help?</strong><br>
+                    Please describe your problem clearly so the ICT support team
+                    can understand your request.
+                </div>
+            </section>
 
-    const form = document.getElementById("contactForm");
-    const status = document.getElementById("formStatus");
-    const button = document.getElementById("sendButton");
+            <section class="contact-form">
+                <h2>Send Us a Message</h2>
 
-    form.addEventListener("submit", async function(event) {
-      event.preventDefault();
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your full name"
+                            required>
+                    </div>
 
-      if (EMAILJS_PUBLIC_KEY.startsWith("YOUR_") ||
-          EMAILJS_SERVICE_ID.startsWith("YOUR_") ||
-          EMAILJS_TEMPLATE_ID.startsWith("YOUR_")) {
-        status.textContent =
-          "Email is not configured yet. Add your EmailJS keys in the code.";
-        return;
-      }
+                    <div class="form-group">
+                        <label for="email">Your Email *</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email address"
+                            required>
+                    </div>
 
-      button.disabled = true;
-      button.textContent = "Sending...";
-      status.textContent = "";
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="Computer Problem">Computer Problem</option>
+                            <option value="Network or Internet">Network or Internet</option>
+                            <option value="Email Problem">Email Problem</option>
+                            <option value="System Support">System Support</option>
+                            <option value="Software Installation">Software Installation</option>
+                            <option value="Other Inquiry">Other Inquiry</option>
+                        </select>
+                    </div>
 
-      try {
-        emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+                    <div class="form-group">
+                        <label for="message">Your Message *</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            placeholder="Describe your issue or inquiry..."
+                            required></textarea>
+                    </div>
 
-        await emailjs.sendForm(
-          EMAILJS_SERVICE_ID,
-          EMAILJS_TEMPLATE_ID,
-          form
-        );
+                    <button type="submit" class="submit-btn">
+                        Send Message
+                    </button>
 
-        status.textContent = "Message sent successfully!";
-        form.reset();
-      } catch (error) {
-        console.error(error);
-        status.textContent =
-          "Message could not be sent. Check your EmailJS settings and internet connection.";
-      } finally {
-        button.disabled = false;
-        button.textContent = "Send Message";
-      }
-    });
-  </script>
+                    <p id="status" class="status" role="status"></p>
+
+                    <div class="notice">
+                        When you click Send Message, your email application will
+                        open with your message prepared for sending.
+                    </div>
+                </form>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <p><strong>NDMA ICT Support</strong></p>
+        <p>Providing reliable technology support and assistance.</p>
+        <p>Built by Hani Hassan Yare</p>
+        <p>&copy; <span id="year"></span> NDMA ICT Support. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const senderEmail = document.getElementById("email").value.trim();
+            const subjectChoice = document.getElementById("subject").value;
+            const message = document.getElementById("message").value.trim();
+            const status = document.getElementById("status");
+
+            if (!name || !senderEmail || !subjectChoice || !message) {
+                status.textContent = "Please complete all required fields.";
+                return;
+            }
+
+            const recipient = "hanihassanyare84@gmali.com";
+            const subject = encodeURIComponent("NDMA ICT Contact: " + subjectChoice);
+            const body = encodeURIComponent(
+                "Name: " + name + "\n" +
+                "Email: " + senderEmail + "\n" +
+                "Subject: " + subjectChoice + "\n\n" +
+                "Message:\n" + message
+            );
+
+            status.textContent =
+                "Opening your email application. Please send the prepared message there.";
+
+            window.location.href =
+                "mailto:" + recipient +
+                "?subject=" + subject +
+                "&body=" + body;
+        });
+    </script>
+
 </body>
 </html>
