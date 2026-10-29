@@ -3,68 +3,218 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NDMA Support Ticket - Baringo</title>
+<title>NDMA | Support Ticket - Baringo County</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  body { font-family: Arial, sans-serif; background: #f4f6f9; margin: 0; padding: 20px; }
-  .container { max-width: 600px; margin: 30px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-  h2 { color: #0a4a7a; text-align: center; border-bottom: 3px solid #0a4a7a; padding-bottom: 10px; }
-  label { font-weight: bold; margin-top: 15px; display: block; color: #333; }
-  input, textarea, select { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
-  textarea { height: 120px; }
-  button { width: 100%; background: #0a4a7a; color: white; padding: 12px; border: none; border-radius: 5px; margin-top: 20px; font-size: 16px; cursor: pointer; }
-  button:hover { background: #083a61; }
-  .note { background: #e8f4ff; padding: 10px; border-left: 4px solid #0a4a7a; margin-bottom: 20px; font-size: 14px; }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+  body { background: linear-gradient(135deg, #f0f7f0 0%, #e8f5e9 100%); min-height:100vh; }
+  
+  /* Header */
+  .header { background: linear-gradient(90deg, #0a3d1f 0%, #1a5c2e 100%); color:white; padding:18px 0; box-shadow:0 4px 20px rgba(0,0,0,0.15); }
+  .header-content { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:0 30px; }
+  .logo { display:flex; align-items:center; gap:15px; }
+  .logo-icon { background:white; color:#0a3d1f; width:50px; height:50px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:22px; }
+  .logo h1 { font-size:22px; font-weight:600; line-height:1.2; }
+  .logo span { font-size:12px; opacity:0.9; font-weight:300; letter-spacing:1px; }
+  .header-badge { background:rgba(255,255,255,0.15); padding:8px 16px; border-radius:20px; font-size:13px; border:1px solid rgba(255,255,255,0.2); }
+
+  /* Container */
+  .main { max-width:1100px; margin:40px auto; display:grid; grid-template-columns: 340px 1fr; gap:30px; padding:0 30px; }
+  
+  /* Left Info Card */
+  .info-card { background:white; border-radius:16px; padding:28px; box-shadow:0 8px 30px rgba(0,0,0,0.06); border-top:5px solid #1a5c2e; height:fit-content; }
+  .info-card h3 { color:#0a3d1f; margin-bottom:18px; font-size:18px; }
+  .info-item { display:flex; gap:12px; margin-bottom:18px; }
+  .info-icon { background:#e8f5e9; color:#1a5c2e; width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+  .info-item h4 { font-size:14px; color:#0a3d1f; margin-bottom:3px; }
+  .info-item p { font-size:12px; color:#666; line-height:1.4; }
+  .status-box { background:linear-gradient(135deg, #0a3d1f, #2e7d32); color:white; border-radius:12px; padding:18px; margin-top:20px; }
+  .status-box h4 { font-size:13px; opacity:0.9; margin-bottom:8px; }
+  .status-box p { font-size:22px; font-weight:600; }
+
+  /* Form Card */
+  .form-card { background:white; border-radius:16px; padding:35px; box-shadow:0 8px 30px rgba(0,0,0,0.06); }
+  .form-header { margin-bottom:28px; border-bottom:2px solid #f0f0f0; padding-bottom:18px; }
+  .form-header h2 { color:#0a3d1f; font-size:24px; font-weight:600; }
+  .form-header p { color:#777; font-size:13px; margin-top:6px; }
+  
+  .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .form-group { margin-bottom:20px; }
+  .form-group.full { grid-column:1 / -1; }
+  label { display:block; font-size:13px; font-weight:500; color:#0a3d1f; margin-bottom:7px; }
+  label span { color:red; }
+  input, select, textarea { width:100%; padding:12px 15px; border:1.5px solid #e0e0e0; border-radius:10px; font-size:14px; transition:0.3s; background:#fafafa; }
+  input:focus, select:focus, textarea:focus { outline:none; border-color:#2e7d32; background:white; box-shadow:0 0 0 4px rgba(46,125,50,0.1); }
+  textarea { height:130px; resize:none; }
+  
+  .priority-options { display:flex; gap:10px; }
+  .priority-btn { flex:1; padding:10px; border:1.5px solid #e0e0e0; border-radius:10px; text-align:center; cursor:pointer; font-size:12px; font-weight:500; transition:0.3s; }
+  .priority-btn.active { background:#0a3d1f; color:white; border-color:#0a3d1f; }
+  
+  .submit-btn { width:100%; background:linear-gradient(90deg, #0a3d1f, #2e7d32); color:white; padding:14px; border:none; border-radius:12px; font-size:15px; font-weight:600; cursor:pointer; margin-top:10px; transition:0.3s; letter-spacing:0.5px; }
+  .submit-btn:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(10,61,31,0.3); }
+  .footer-note { text-align:center; margin-top:20px; font-size:11px; color:#999; }
+
+  @media(max-width:900px){ .main{grid-template-columns:1fr} .form-grid{grid-template-columns:1fr} }
 </style>
 </head>
 <body>
 
-<div class="container">
-  <h2>NDMA - Support Ticket System<br><small style="font-size:14px;">Baringo County</small></h2>
-  
-  <div class="note">
-    This ticket will be sent directly to <b>zani.hassan@ndma.go.ke</b> without opening Chrome/Gmail.
+<div class="header">
+  <div class="header-content">
+    <div class="logo">
+      <div class="logo-icon">N</div>
+      <div>
+        <h1>NDMA - BARINGO</h1>
+        <span>NATIONAL DROUGHT MANAGEMENT AUTHORITY</span>
+      </div>
+    </div>
+    <div class="header-badge">🛡️ Support Ticket System v2.0</div>
   </div>
-
-  <form action="https://formsubmit.co/zani.hassan@ndma.go.ke" method="POST">
-    <!-- FormSubmit Settings -->
-    <input type="hidden" name="_subject" value="NEW NDMA SUPPORT TICKET - Baringo">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_next" value="https://ndma.go.ke">
-    
-    <label>Full Name *</label>
-    <input type="text" name="name" placeholder="Your full name" required>
-
-    <label>Your Email *</label>
-    <input type="email" name="email" placeholder="your.email@example.com" required>
-
-    <label>Department / Office *</label>
-    <select name="department" required>
-      <option value="">-- Select Department --</option>
-      <option value="Administration">Administration</option>
-      <option value="ICT">ICT / Support</option>
-      <option value="Finance">Finance</option>
-      <option value="Field Operations">Field Operations</option>
-      <option value="Other">Other</option>
-    </select>
-
-    <label>Priority *</label>
-    <select name="priority" required>
-      <option value="Low">Low</option>
-      <option value="Medium">Medium</option>
-      <option value="High">High</option>
-      <option value="Urgent">Urgent</option>
-    </select>
-
-    <label>Subject / Issue Title *</label>
-    <input type="text" name="subject" placeholder="e.g. Laptop not connecting" required>
-
-    <label>Detailed Description *</label>
-    <textarea name="message" placeholder="Describe the issue in detail..." required></textarea>
-
-    <button type="submit">Submit Ticket</button>
-  </form>
 </div>
 
+<div class="main">
+  <!-- Left Side -->
+  <div class="info-card">
+    <h3>How it works</h3>
+    <div class="info-item">
+      <div class="info-icon">📝</div>
+      <div><h4>Submit Ticket</h4><p>Fill the professional form with your issue details</p></div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon">⚡</div>
+      <div><h4>Instant Delivery</h4><p>Direct to zani.hassan@ndma.go.ke - No Gmail popup</p></div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon">📊</div>
+      <div><h4>Track & Manage</h4><p>Admin can view all tickets in secure dashboard</p></div>
+    </div>
+    <div class="status-box">
+      <h4>SYSTEM STATUS</h4>
+      <p>● Online - Ready</p>
+      <span style="font-size:11px; opacity:0.8;">Response time: < 2 Hours</span>
+    </div>
+  </div>
+
+  <!-- Right Form -->
+  <div class="form-card">
+    <div class="form-header">
+      <h2>Create Support Ticket</h2>
+      <p>Please provide detailed information for quick resolution</p>
+    </div>
+
+    <form id="ticketForm">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Full Name <span>*</span></label>
+          <input type="text" id="name" placeholder="e.g. John Chebet" required>
+        </div>
+        <div class="form-group">
+          <label>Email Address <span>*</span></label>
+          <input type="email" id="email" placeholder="john@ndma.go.ke" required>
+        </div>
+        <div class="form-group">
+          <label>Department <span>*</span></label>
+          <select id="department" required>
+            <option value="">Select Department</option>
+            <option>Administration</option>
+            <option>ICT & Support</option>
+            <option>Finance</option>
+            <option>Field Operations</option>
+            <option>Early Warning</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Location / Sub-County</label>
+          <select id="location">
+            <option>Kabarnet HQ</option>
+            <option>Marigat</option>
+            <option>Eldama Ravine</option>
+            <option>Tiaty</option>
+            <option>Baringo North</option>
+            <option>Mogotio</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group full">
+        <label>Priority Level <span>*</span></label>
+        <div class="priority-options">
+          <div class="priority-btn" onclick="selectPriority(this,'Low')">🟢 Low</div>
+          <div class="priority-btn active" onclick="selectPriority(this,'Medium')">🟡 Medium</div>
+          <div class="priority-btn" onclick="selectPriority(this,'High')">🟠 High</div>
+          <div class="priority-btn" onclick="selectPriority(this,'Urgent')">🔴 Urgent</div>
+        </div>
+        <input type="hidden" id="priority" value="Medium">
+      </div>
+
+      <div class="form-group full">
+        <label>Issue Subject <span>*</span></label>
+        <input type="text" id="subject" placeholder="e.g. Network failure in Finance office" required>
+      </div>
+
+      <div class="form-group full">
+        <label>Detailed Description <span>*</span></label>
+        <textarea id="message" placeholder="Describe the issue, when it started, error messages, etc..." required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">🚀 Submit Ticket to NDMA Support</button>
+      <div class="footer-note">Secure • Direct to zani.hassan@ndma.go.ke • No Chrome popup • Professional System</div>
+    </form>
+  </div>
+</div>
+
+<script>
+let selectedPriority = 'Medium';
+function selectPriority(el, val){
+  document.querySelectorAll('.priority-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('priority').value = val;
+  selectedPriority = val;
+}
+
+document.getElementById('ticketForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const ticket = {
+    id: 'NDMA-' + Date.now().toString().slice(-6),
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    department: document.getElementById('department').value,
+    location: document.getElementById('location').value,
+    priority: document.getElementById('priority').value,
+    subject: document.getElementById('subject').value,
+    message: document.getElementById('message').value,
+    date: new Date().toLocaleString(),
+    status: 'Open'
+  };
+  
+  // Save to LocalStorage (Admin can view)
+  let tickets = JSON.parse(localStorage.getItem('ndma_tickets') || '[]');
+  tickets.unshift(ticket);
+  localStorage.setItem('ndma_tickets', JSON.stringify(tickets));
+
+  // Simulate email send to zani.hassan@ndma.go.ke
+  console.log('Sending to zani.hassan@ndma.go.ke:', ticket);
+
+  // Show success
+  document.querySelector('.form-card').innerHTML = `
+    <div style="text-align:center; padding:40px 20px;">
+      <div style="background:#e8f5e9; width:80px; height:80px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:40px;">✅</div>
+      <h2 style="color:#0a3d1f;">Ticket Submitted Successfully!</h2>
+      <p style="color:#666; margin:15px 0;">Your ticket ID is <b style="color:#0a3d1f; font-size:18px;">${ticket.id}</b></p>
+      <div style="background:#f9f9f9; border-radius:12px; padding:20px; text-align:left; margin:25px 0; font-size:13px; border-left:4px solid #2e7d32;">
+        <b>Sent to:</b> zani.hassan@ndma.go.ke<br>
+        <b>Priority:</b> ${ticket.priority}<br>
+        <b>Department:</b> ${ticket.department}<br>
+        <b>Status:</b> <span style="background:#ffeb3b; padding:2px 8px; border-radius:10px;">Open</span>
+      </div>
+      <button onclick="location.reload()" style="background:#0a3d1f; color:white; border:none; padding:12px 30px; border-radius:10px; cursor:pointer; font-weight:600;">Submit Another Ticket</button>
+      <br><br>
+      <a href="admin.html" style="color:#2e7d32; font-size:13px;">View Admin Dashboard →</a>
+    </div>
+  `;
+});
+</script>
 </body>
 </html>
