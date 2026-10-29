@@ -1,543 +1,70 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Submit a Ticket | NDMA ICT Support</title>
-
-  <style>
-    :root {
-      --green: #075b3b;
-      --dark-green: #033b28;
-      --light-green: #edf6f0;
-      --white: #ffffff;
-      --text: #24352d;
-      --muted: #68786f;
-      --border: #dce7df;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f5f8f5;
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-    }
-
-    nav {
-      background: var(--dark-green);
-      color: white;
-      padding: 17px 6%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .brand {
-      font-size: 21px;
-      font-weight: bold;
-      color: white;
-    }
-
-    .brand span {
-      color: #a9e8c3;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-    }
-
-    .nav-links a {
-      color: white;
-      font-size: 14px;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: #a9e8c3;
-    }
-
-    .hero {
-      background: linear-gradient(120deg, #033b28, #08794d);
-      color: white;
-      padding: 55px 20px;
-      text-align: center;
-    }
-
-    .hero .tag {
-      display: inline-block;
-      border: 1px solid #8bc9a7;
-      border-radius: 30px;
-      padding: 5px 14px;
-      font-size: 13px;
-      margin-bottom: 12px;
-    }
-
-    .hero h1 {
-      font-size: clamp(28px, 4vw, 42px);
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      max-width: 650px;
-      margin: auto;
-      color: #e2f2e8;
-    }
-
-    .container {
-      width: min(1100px, 92%);
-      margin: 40px auto;
-    }
-
-    .intro {
-      text-align: center;
-      margin-bottom: 28px;
-    }
-
-    .intro h2 {
-      color: var(--dark-green);
-      font-size: 28px;
-      margin-bottom: 8px;
-    }
-
-    .intro p {
-      color: var(--muted);
-    }
-
-    .content {
-      display: grid;
-      grid-template-columns: 1.6fr 1fr;
-      gap: 25px;
-      align-items: start;
-    }
-
-    .card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-      box-shadow: 0 8px 28px rgba(3, 59, 40, 0.06);
-    }
-
-    .card h2 {
-      color: var(--dark-green);
-      font-size: 23px;
-      margin-bottom: 8px;
-    }
-
-    .card-description {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 23px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 17px;
-    }
-
-    .field {
-      margin-bottom: 18px;
-    }
-
-    label {
-      display: block;
-      font-weight: bold;
-      font-size: 14px;
-      margin-bottom: 7px;
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      padding: 12px 13px;
-      border: 1px solid #cbd9cf;
-      border-radius: 8px;
-      font: inherit;
-      font-size: 14px;
-      background: white;
-      color: var(--text);
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      outline: 2px solid #a9e8c3;
-      border-color: var(--green);
-    }
-
-    textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .submit-btn {
-      width: 100%;
-      background: var(--green);
-      color: white;
-      border: none;
-      border-radius: 9px;
-      padding: 14px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .submit-btn:hover {
-      background: var(--dark-green);
-    }
-
-    .notice {
-      margin-top: 15px;
-      padding: 12px;
-      background: var(--light-green);
-      color: var(--dark-green);
-      border-radius: 8px;
-      font-size: 13px;
-    }
-
-    .notice a {
-      color: var(--green);
-      font-weight: bold;
-      text-decoration: underline;
-    }
-
-    .contact-item {
-      padding: 15px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .contact-item:last-child {
-      border-bottom: none;
-    }
-
-    .contact-item h3 {
-      font-size: 15px;
-      color: var(--dark-green);
-      margin-bottom: 5px;
-    }
-
-    .contact-item p,
-    .contact-item a {
-      font-size: 14px;
-      color: var(--muted);
-      overflow-wrap: anywhere;
-    }
-
-    .contact-item a:hover {
-      color: var(--green);
-      text-decoration: underline;
-    }
-
-    .help-box {
-      background: var(--light-green);
-      border-radius: 12px;
-      padding: 17px;
-      margin-top: 20px;
-    }
-
-    .help-box h3 {
-      color: var(--dark-green);
-      margin-bottom: 7px;
-      font-size: 16px;
-    }
-
-    .help-box p {
-      font-size: 14px;
-      color: #405c4b;
-    }
-
-    footer {
-      background: var(--dark-green);
-      color: white;
-      text-align: center;
-      padding: 23px 15px;
-      margin-top: 55px;
-      font-size: 14px;
-    }
-
-    footer a {
-      color: #a9e8c3;
-    }
-
-    @media (max-width: 760px) {
-      nav {
-        justify-content: center;
-      }
-
-      .nav-links {
-        justify-content: center;
-        gap: 12px;
-      }
-
-      .content {
-        grid-template-columns: 1fr;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-        gap: 0;
-      }
-
-      .card {
-        padding: 21px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NDMA Support Ticket - Baringo</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #f4f6f9; margin: 0; padding: 20px; }
+  .container { max-width: 600px; margin: 30px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+  h2 { color: #0a4a7a; text-align: center; border-bottom: 3px solid #0a4a7a; padding-bottom: 10px; }
+  label { font-weight: bold; margin-top: 15px; display: block; color: #333; }
+  input, textarea, select { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+  textarea { height: 120px; }
+  button { width: 100%; background: #0a4a7a; color: white; padding: 12px; border: none; border-radius: 5px; margin-top: 20px; font-size: 16px; cursor: pointer; }
+  button:hover { background: #083a61; }
+  .note { background: #e8f4ff; padding: 10px; border-left: 4px solid #0a4a7a; margin-bottom: 20px; font-size: 14px; }
+</style>
 </head>
-
 <body>
 
-  <nav>
-    <a href="index.html" class="brand">NDMA <span>ICT Support</span></a>
+<div class="container">
+  <h2>NDMA - Support Ticket System<br><small style="font-size:14px;">Baringo County</small></h2>
+  
+  <div class="note">
+    This ticket will be sent directly to <b>zani.hassan@ndma.go.ke</b> without opening Chrome/Gmail.
+  </div>
 
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html">Contact Us</a>
-      <a href="ticket.html" class="active">Submit Ticket</a>
-    </div>
-  </nav>
+  <form action="https://formsubmit.co/zani.hassan@ndma.go.ke" method="POST">
+    <!-- FormSubmit Settings -->
+    <input type="hidden" name="_subject" value="NEW NDMA SUPPORT TICKET - Baringo">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_next" value="https://ndma.go.ke">
+    
+    <label>Full Name *</label>
+    <input type="text" name="name" placeholder="Your full name" required>
 
-  <header class="hero">
-    <span class="tag">ICT HELP DESK</span>
-    <h1>Submit a Support Ticket</h1>
-    <p>
-      Having a technical problem? Complete the form below to prepare a support
-      request for the ICT support team.
-    </p>
-  </header>
+    <label>Your Email *</label>
+    <input type="email" name="email" placeholder="your.email@example.com" required>
 
-  <main class="container">
-    <div class="intro">
-      <h2>How Can We Help You?</h2>
-      <p>Provide the details of your issue so the support team can understand your request.</p>
-    </div>
+    <label>Department / Office *</label>
+    <select name="department" required>
+      <option value="">-- Select Department --</option>
+      <option value="Administration">Administration</option>
+      <option value="ICT">ICT / Support</option>
+      <option value="Finance">Finance</option>
+      <option value="Field Operations">Field Operations</option>
+      <option value="Other">Other</option>
+    </select>
 
-    <div class="content">
+    <label>Priority *</label>
+    <select name="priority" required>
+      <option value="Low">Low</option>
+      <option value="Medium">Medium</option>
+      <option value="High">High</option>
+      <option value="Urgent">Urgent</option>
+    </select>
 
-      <section class="card">
-        <h2>Ticket Details</h2>
-        <p class="card-description">
-          Fields marked with * are required.
-        </p>
+    <label>Subject / Issue Title *</label>
+    <input type="text" name="subject" placeholder="e.g. Laptop not connecting" required>
 
-        <form id="ticketForm">
-          <div class="form-row">
-            <div class="field">
-              <label for="name">Full Name *</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Enter your full name"
-                required
-              >
-            </div>
+    <label>Detailed Description *</label>
+    <textarea name="message" placeholder="Describe the issue in detail..." required></textarea>
 
-            <div class="field">
-              <label for="email">Your Email *</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Enter your email address"
-                required
-              >
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="field">
-              <label for="phone">Phone Number</label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                placeholder="Enter your phone number"
-              >
-            </div>
-
-            <div class="field">
-              <label for="issue">Type of Issue *</label>
-              <select id="issue" name="issue" required>
-                <option value="">Select an issue</option>
-                <option value="Computer Problem">Computer Problem</option>
-                <option value="Network or Internet">Network or Internet</option>
-                <option value="Email Problem">Email Problem</option>
-                <option value="Printer Problem">Printer Problem</option>
-                <option value="Software Installation">Software Installation</option>
-                <option value="Password or Account">Password or Account</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="field">
-            <label for="priority">Priority *</label>
-            <select id="priority" name="priority" required>
-              <option value="">Select priority</option>
-              <option value="Low">Low - General assistance</option>
-              <option value="Medium">Medium - Work is affected</option>
-              <option value="High">High - Urgent problem</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="message">Describe Your Problem *</label>
-            <textarea
-              id="message"
-              name="message"
-              placeholder="Explain the problem you are experiencing..."
-              required
-            ></textarea>
-          </div>
-
-          <button type="submit" class="submit-btn">
-            Submit Support Ticket
-          </button>
-
-          <div class="notice" id="statusMessage" role="status" aria-live="polite">
-            When you submit the form, your email application will open with
-            the ticket details. You must press Send to send the email.
-          </div>
-        </form>
-      </section>
-
-      <aside class="card">
-        <h2>Contact ICT Support</h2>
-        <p class="card-description">
-          Use the contact details below if you need further assistance.
-        </p>
-
-        <div class="contact-item">
-          <h3>Email Address</h3>
-          <a href="mailto:hanihassanyare84@gmali.com">
-            hanihassanyare84@gmali.com
-          </a>
-        </div>
-
-        <div class="contact-item">
-          <h3>Phone Number</h3>
-          <a href="tel:0725467098">0725467098</a>
-        </div>
-
-        <div class="contact-item">
-          <h3>LinkedIn</h3>
-          <a
-            href="https://www.linkedin.com/in/hani-hassan-yare-03856a354"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View LinkedIn Profile
-          </a>
-        </div>
-
-        <div class="help-box">
-          <h3>Before Submitting</h3>
-          <p>
-            Describe the problem clearly. Include any error message you see
-            and explain what you were doing when the problem occurred.
-          </p>
-        </div>
-
-        <div class="help-box">
-          <h3>Need to Send an Email?</h3>
-          <p>
-            <a href="mailto:hanihassanyare84@gmali.com">
-              Click here to email ICT Support
-            </a>
-          </p>
-        </div>
-      </aside>
-
-    </div>
-  </main>
-
-  <footer>
-    <p>&copy; <span id="year"></span> NDMA ICT Support. All rights reserved.</p>
-    <p>Website built by Hani Hassan Yare.</p>
-  </footer>
-
-  <script>
-    // Display the current year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Email address where the ticket will be addressed
-    const recipient = "hanihassanyare84@gmali.com";
-
-    document.getElementById("ticketForm").addEventListener("submit", function (event) {
-      event.preventDefault();
-
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-      const issue = document.getElementById("issue").value;
-      const priority = document.getElementById("priority").value;
-      const message = document.getElementById("message").value.trim();
-      const status = document.getElementById("statusMessage");
-
-      if (!name || !email || !issue || !priority || !message) {
-        status.textContent = "Please complete all required fields.";
-        return;
-      }
-
-      const subject = "NDMA ICT Support Ticket - " + issue;
-
-      const body =
-        "NEW ICT SUPPORT TICKET\n\n" +
-        "Full Name: " + name + "\n" +
-        "Email: " + email + "\n" +
-        "Phone: " + (phone || "Not provided") + "\n" +
-        "Issue Type: " + issue + "\n" +
-        "Priority: " + priority + "\n\n" +
-        "Problem Description:\n" + message + "\n\n" +
-        "Please reply to the requester at: " + email;
-
-      const mailtoLink =
-        "mailto:" + recipient +
-        "?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(body);
-
-      status.textContent =
-        "Opening your email application. If it does not open, use the email link below.";
-
-      // Open the user's default email application
-      window.location.href = mailtoLink;
-
-      // Show a fallback link in case no email application opens
-      const fallback = document.createElement("p");
-      fallback.style.marginTop = "10px";
-
-      const link = document.createElement("a");
-      link.href = mailtoLink;
-      link.textContent = "Click here to open your ticket email";
-      link.style.fontWeight = "bold";
-      link.style.textDecoration = "underline";
-
-      fallback.appendChild(link);
-      status.appendChild(fallback);
-    });
-  </script>
+    <button type="submit">Submit Ticket</button>
+  </form>
+</div>
 
 </body>
 </html>
